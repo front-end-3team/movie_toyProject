@@ -1,9 +1,11 @@
-function App() {
-	let b = 'ddd';
+import HomePage from './pages/selectPage/home';
 
+function App() {
 	return (
 		<div>
-			<>{}</>
+			<>
+				<HomePage />
+			</>
 		</div>
 	);
 }
