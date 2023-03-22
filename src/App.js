@@ -1,14 +1,14 @@
-import HomePage from './pages/selectPage/home';
-import Search from './pages/selectPage/search';
+import { QueryClient, QueryClientProvider } from 'react-query';
+import { ReactQueryDevtools } from 'react-query/devtools';
 
 function App() {
+	const client = new QueryClient();
 	return (
-		<div>
-			<>
-				<HomePage />
-				<Search />
-			</>
-		</div>
+		<Layout>
+			<QueryClientProvider client={client}>
+				<ReactQueryDevtools />
+			</QueryClientProvider>
+		</Layout>
 	);
 }
 
