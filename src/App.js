@@ -1,14 +1,12 @@
-import { QueryClient, QueryClientProvider } from 'react-query';
-import { ReactQueryDevtools } from 'react-query/devtools';
-
+import IndexHeader from './components/Layout';
+import HomePage from './pages/components/List/Home/home';
+import './accept/css/reset.css';
 function App() {
-	const client = new QueryClient();
 	return (
-		<Layout>
-			<QueryClientProvider client={client}>
-				<ReactQueryDevtools />
-			</QueryClientProvider>
-		</Layout>
+		<>
+			<IndexHeader />
+			<HomePage />
+		</>
 	);
 }
 

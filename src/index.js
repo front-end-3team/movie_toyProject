@@ -1,13 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { QueryClient, QueryClientProvider } from 'react-query';
 import App from './App';
-
-const queryClient = new QueryClient(); //react-query를 사용하기 위한 인터스턴 생성
-
+const queryClient = new QueryClient(); //캐시와 훅을 쓸수있게 정의
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-	<QueryClientProvider client={queryClient}>
-		<ReactQueryDevtools initialIsOpen={true} />
-		<App />
-	</QueryClientProvider>,
+	<React.StrictMode>
+		<QueryClientProvider client={queryClient}>
+			<App />
+		</QueryClientProvider>
+	</React.StrictMode>,
 );
