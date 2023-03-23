@@ -6,9 +6,11 @@ function Menu() {
 	console.log(navigate);
 	return (
 		<ButtonWrap>
-			<Button1>now playing</Button1>
+			<Button1 onClick={() => navigate('/nowPlaying')}>
+				now playing
+			</Button1>
 			<Button2 onClick={() => navigate('/upComing')}>upcoming</Button2>
-			<Button3>top-rated</Button3>
+			<Button3 onClick={() => navigate('/topRated')}>top-rated</Button3>
 		</ButtonWrap>
 	);
 }
