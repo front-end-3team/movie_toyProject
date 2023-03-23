@@ -18,9 +18,11 @@ export const getUpComing = async ({ pageParam }) => {
 	return res.data;
 };
 
-export const getNowPlaying = async ({ pageParam }) => {
+
+export const getTopRated = async ({ pageParam }) => {
 	const res = await Axios.get(
-		`${PATH}/now_playing?api_key=${API_KEY}&language=${LANGUAGE}&page=${pageParam}`,
+		`${PATH}/top_rated?api_key=${API_KEY}&language=${LANGUAGE}&page=${pageParam}`,
+
 	);
 	return res.data;
 };
