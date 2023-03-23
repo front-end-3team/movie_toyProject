@@ -6,7 +6,7 @@ import CommonList from '../infiniteScroll';
 
 function NowPlaying() {
 	const { isLoading, isError, error, data, hasNextPage, fetchNextPage } =
-		useInfiniteQuery(['NowPlaying'], getNowPlaying, {
+		useInfiniteQuery(['topRated'], getNowPlaying, {
 			getNextPageParam: currentPage => {
 				const nextPage = currentPage.page + 1;
 				return nextPage > currentPage.total_pages ? null : nextPage;
@@ -15,7 +15,7 @@ function NowPlaying() {
 
 	return (
 		<>
-			<S.H1>NowPlaying</S.H1>
+			<S.H1>Top Rated</S.H1>
 			<CommonList
 				data={data}
 				isLoading={isLoading}
@@ -27,8 +27,8 @@ function NowPlaying() {
 		</>
 	);
 }
-
 export default NowPlaying;
+
 const H1 = styled.h1`
 	background-color: rgb(132, 132, 132);
 	font-size: 60px;
