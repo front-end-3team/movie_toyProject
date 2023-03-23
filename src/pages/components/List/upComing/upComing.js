@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { getUpComing } from '../../../../apis/api';
 import CommonList from '../commonList';
 
-const UpComing = () => {
+function UpComing() {
 	const { isLoading, isError, error, data, hasNextPage, fetchNextPage } =
 		useInfiniteQuery(['upComing'], getUpComing, {
 			getNextPageParam: currentPage => {
@@ -26,7 +26,7 @@ const UpComing = () => {
 			/>
 		</>
 	);
-};
+}
 
 export default UpComing;
 const H1 = styled.h1`
