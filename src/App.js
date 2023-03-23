@@ -1,14 +1,13 @@
-import { QueryClient, QueryClientProvider } from 'react-query';
-import { ReactQueryDevtools } from 'react-query/devtools';
-
+import IndexHeader from './components/Layout';
+import './accept/css/reset.css';
+import UpComing from './pages/components/List/upComing/upComing';
 function App() {
-	const client = new QueryClient();
 	return (
-		<Layout>
-			<QueryClientProvider client={client}>
-				<ReactQueryDevtools />
-			</QueryClientProvider>
-		</Layout>
+		<>
+			<IndexHeader />
+			{/* <HomePage /> */}
+			<UpComing />
+		</>
 	);
 }
 

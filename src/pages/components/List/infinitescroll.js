@@ -3,7 +3,7 @@ import { useInfiniteQuery } from 'react-query';
 import styled from 'styled-components';
 import { getUpComing } from '../../../../apis/api';
 
-const UpComing = () => {
+function Infinitescroll() {
 	const { isLoading, isError, error, data, hasNextPage, fetchNextPage } =
 		useInfiniteQuery(['colors'], getUpComing, {
 			getNextPageParam: currentPage => {
@@ -59,7 +59,8 @@ const UpComing = () => {
 	);
 };
 
-export default UpComing;
+
+export default Infinitescroll;
 
 const List = styled.div`
 	background-color: rgb(132, 132, 132);
@@ -90,3 +91,6 @@ const Contents_Body = styled.div`
 	padding: 20px;
 	font-size: 18px;
 `;
+
+}
+
