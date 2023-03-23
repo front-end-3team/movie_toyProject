@@ -1,6 +1,7 @@
 import { createBrowserRouter } from 'react-router-dom';
 import IndexHeader from '../components';
 import HomePage from '../pages/components/List/Home/home';
+import UpComing from '../pages/components/List/upComing/upComing';
 
 const router = createBrowserRouter([
 	{
@@ -8,13 +9,13 @@ const router = createBrowserRouter([
 		element: <IndexHeader />,
 		children: [
 			{
-				path: '/',
+				path: '',
 				element: <HomePage />,
 			},
-			// {
-			// 	path: '/about',
-			// 	element: <About />,
-			// },
+			{
+				path: '/upComing',
+				element: <UpComing />,
+			},
 		],
 	},
 ]);

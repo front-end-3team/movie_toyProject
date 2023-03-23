@@ -1,10 +1,12 @@
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
 function Menu() {
+	const navigate = useNavigate();
 	return (
 		<ButtonWrap>
 			<Button1>now playing</Button1>
-			<Button>upcoming</Button>
+			<Button onClick={() => navigate('/upComing')}>upcoming</Button>
 			<Button3>top-rated</Button3>
 		</ButtonWrap>
 	);
