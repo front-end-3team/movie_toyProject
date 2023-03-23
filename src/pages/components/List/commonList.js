@@ -1,19 +1,16 @@
 import React from 'react';
-import { useInfiniteQuery } from 'react-query';
 import styled from 'styled-components';
-import { getUpComing } from '../../../../apis/api';
 
-function Infinitescroll() {
-	const { isLoading, isError, error, data, hasNextPage, fetchNextPage } =
-		useInfiniteQuery(['colors'], getUpComing, {
-			getNextPageParam: currentPage => {
-				const nextPage = currentPage.page + 1;
-				return nextPage > currentPage.total_pages ? null : nextPage;
-			},
-		});
-	console.log(data);
+function CommonList({
+	data,
+	isLoading,
+	isError,
+	fetchNextPage,
+	hasNextPage,
+	error,
+}) {
+	const IMG_BASE_URL = 'https://image.tmdb.org/t/p/original/';
 
-	//isLoading true일때 스켈레톤 보여주는걸로 변경하고
 	if (isLoading) {
 		return <h2>Loading...</h2>;
 	}
@@ -28,21 +25,16 @@ function Infinitescroll() {
 			fetchNextPage();
 		}
 	};
-	//nextpage하면 pages에 객체 추가한다.
-	/*
-		title: 제목
-		vote_average: 평점
-		overview: 영화 설명 이건 조금만 보여줘야함
-		poster_path: 포스터로 예상
 
-	*/
 	return (
 		<>
 			<List>
 				{data.pages.map(db => {
 					return db.results.map(el => (
 						<Box>
-							<Img />
+							<ImgWrap>
+								<Img src={IMG_BASE_URL + el.poster_path} />
+							</ImgWrap>
 							<Contents>
 								<Contents_Header>
 									<div>{el.title}</div>
@@ -57,10 +49,9 @@ function Infinitescroll() {
 			<button onClick={loadMore}>click!</button>
 		</>
 	);
-};
+}
 
-
-export default Infinitescroll;
+export default CommonList;
 
 const List = styled.div`
 	background-color: rgb(132, 132, 132);
@@ -77,6 +68,7 @@ const Box = styled.div`
 `;
 const Img = styled.img`
 	height: 300px;
+	width: 250px;
 `;
 const Contents = styled.div`
 	padding: 8px 10px;
@@ -91,6 +83,7 @@ const Contents_Body = styled.div`
 	padding: 20px;
 	font-size: 18px;
 `;
-
-}
-
+const ImgWrap = styled.div`
+	display: flex;
+	justify-content: center;
+`;
