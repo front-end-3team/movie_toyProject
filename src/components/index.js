@@ -1,12 +1,15 @@
-import { Outlet } from 'react-router-dom';
+import { Outlet, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import SearchBtn from './Button/SearchBtn';
 import Menu from './Layout/Header/Menu';
 function IndexHeader() {
+	const navigate = useNavigate();
 	return (
 		<>
 			<Header>
-				<HeaderLogo>영화를 보CINEMA</HeaderLogo>
+				<HeaderLogo onClick={() => navigate('')}>
+					영화를 보CINEMA
+				</HeaderLogo>
 				<Menu />
 				<SearchBtn />
 			</Header>
@@ -27,4 +30,5 @@ const Header = styled.div`
 const HeaderLogo = styled.div`
 	font-size: 40px;
 	font-weight: bold;
+	cursor: pointer;
 `;
