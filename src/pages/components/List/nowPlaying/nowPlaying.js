@@ -2,7 +2,7 @@ import React from 'react';
 import { useInfiniteQuery } from 'react-query';
 import styled from 'styled-components';
 import { getNowPlaying } from '../../../../apis/api';
-import CommonList from '../commonList';
+import CommonList from '../infiniteScroll';
 
 function NowPlaying() {
 	const { isLoading, isError, error, data, hasNextPage, fetchNextPage } =
