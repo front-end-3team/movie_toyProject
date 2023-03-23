@@ -1,13 +1,17 @@
+import { Outlet } from 'react-router-dom';
 import styled from 'styled-components';
 import SearchBtn from './Button/SearchBtn';
 import Menu from './Layout/Header/Menu';
 function IndexHeader() {
 	return (
-		<Header>
-			<HeaderLogo>영화를 보CINEMA</HeaderLogo>
-			<Menu />
-			<SearchBtn />
-		</Header>
+		<>
+			<Header>
+				<HeaderLogo>영화를 보CINEMA</HeaderLogo>
+				<Menu />
+				<SearchBtn />
+			</Header>
+			<Outlet />
+		</>
 	);
 }
 export default IndexHeader;
