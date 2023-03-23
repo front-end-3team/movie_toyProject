@@ -29,6 +29,9 @@ const Button2 = styled.button`
 	:hover {
 		background-color: rgb(62, 62, 62);
 	}
+	:focus {
+		background-color: rgb(32, 32, 32);
+	}
 `;
 const Button1 = styled.button`
 	background-color: black;
@@ -41,6 +44,9 @@ const Button1 = styled.button`
 	:hover {
 		background-color: rgb(62, 62, 62);
 	}
+	:focus {
+		background-color: rgb(32, 32, 32);
+	}
 `;
 const Button3 = styled.button`
 	background-color: black;
@@ -52,5 +58,8 @@ const Button3 = styled.button`
 	cursor: pointer;
 	:hover {
 		background-color: rgb(62, 62, 62);
+	}
+	:focus {
+		background-color: rgb(32, 32, 32);
 	}
 `;

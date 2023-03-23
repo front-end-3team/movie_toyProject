@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { getMovies } from '../../../../apis/api';
 import CommonList from '../commonList';
 
-const HomePage = () => {
+function HomePage() {
 	const { isLoading, isError, error, data, hasNextPage, fetchNextPage } =
 		useInfiniteQuery(['HomePage'], getMovies, {
 			getNextPageParam: currentPage => {
@@ -26,7 +26,7 @@ const HomePage = () => {
 			/>
 		</>
 	);
-};
+}
 
 export default HomePage;
 
