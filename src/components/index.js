@@ -1,7 +1,6 @@
 import styled from 'styled-components';
-import SearchBtn from '../Button/SearchBtn';
-import Menu from './Header/Menu';
-
+import SearchBtn from './Button/SearchBtn';
+import Menu from './Layout/Header/Menu';
 function IndexHeader() {
 	return (
 		<Header>

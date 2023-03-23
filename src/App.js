@@ -1,12 +1,10 @@
-import IndexHeader from './components/Layout';
 import './accept/css/reset.css';
-import UpComing from './pages/components/List/upComing/upComing';
+import { RouterProvider } from 'react-router-dom';
+import router from './routes/routing';
 function App() {
 	return (
 		<>
-			<IndexHeader />
-			{/* <HomePage /> */}
-			<UpComing />
+			<RouterProvider router={router} />
 		</>
 	);
 }
