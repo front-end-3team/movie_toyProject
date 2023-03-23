@@ -4,8 +4,8 @@ function SearchBtn() {
 	const onClickSearch = () => {};
 	return (
 		<form onSubmit={onClickSearch}>
-			<SearchInput />
-			<Button>검색</Button>
+			<S.SearchInput />
+			<S.Button>검색</S.Button>
 		</form>
 	);
 }
@@ -32,3 +32,7 @@ const Button = styled.button`
 	text-align: right;
 	cursor: pointer;
 `;
+const S = {
+	SearchInput,
+	Button,
+};

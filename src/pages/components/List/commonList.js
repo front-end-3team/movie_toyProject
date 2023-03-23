@@ -19,7 +19,10 @@ function CommonList({
 	if (isError) {
 		return <h2>{error.message}</h2>;
 	}
-
+	const scrollUp = () => {
+		// top:0 >> 맨위로  behavior:smooth >> 부드럽게 이동할수 있게 설정하는 속성
+		window.scrollTo({ top: 0, behavior: 'smooth' });
+	};
 	const loadMore = () => {
 		if (hasNextPage) {
 			fetchNextPage();
@@ -28,25 +31,26 @@ function CommonList({
 
 	return (
 		<>
-			<List>
+			<S.List>
 				{data.pages.map(db => {
 					return db.results.map(el => (
-						<Box>
-							<ImgWrap>
-								<Img src={IMG_BASE_URL + el.poster_path} />
-							</ImgWrap>
-							<Contents>
-								<Contents_Header>
+						<S.Box>
+							<S.ImgWrap>
+								<S.Img src={IMG_BASE_URL + el.poster_path} />
+							</S.ImgWrap>
+							<S.Contents>
+								<S.Contents_Header>
 									<div>{el.title}</div>
 									<div>{el.vote_average}</div>
-								</Contents_Header>
-								<Contents_Body>{el.overview}</Contents_Body>
-							</Contents>
-						</Box>
+								</S.Contents_Header>
+								<S.Contents_Body>{el.overview}</S.Contents_Body>
+							</S.Contents>
+						</S.Box>
 					));
 				})}
-			</List>
-			<button onClick={loadMore}>click!</button>
+			</S.List>
+			<S.UpBtn onClick={scrollUp}>UP!</S.UpBtn>
+			<S.AddListBtn onClick={loadMore}>더보기</S.AddListBtn>
 		</>
 	);
 }
@@ -87,3 +91,28 @@ const ImgWrap = styled.div`
 	display: flex;
 	justify-content: center;
 `;
+const UpBtn = styled.button`
+	padding: 30px;
+	border-radius: 50%;
+	background-color: yellow;
+	position: sticky;
+	left: 90%;
+	bottom: 100px;
+	:hover {
+		background-color: orange;
+	}
+`;
+const AddListBtn = styled.button`
+	padding: 40px;
+`;
+const S = {
+	List,
+	Box,
+	Img,
+	Contents,
+	Contents_Header,
+	Contents_Body,
+	ImgWrap,
+	UpBtn,
+	AddListBtn,
+};

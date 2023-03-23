@@ -6,13 +6,13 @@ function IndexHeader() {
 	const navigate = useNavigate();
 	return (
 		<>
-			<Header>
-				<HeaderLogo onClick={() => navigate('')}>
+			<S.Header>
+				<S.HeaderLogo onClick={() => navigate('')}>
 					영화를 보CINEMA
-				</HeaderLogo>
+				</S.HeaderLogo>
 				<Menu />
 				<SearchBtn />
-			</Header>
+			</S.Header>
 			<Outlet />
 		</>
 	);
@@ -32,3 +32,7 @@ const HeaderLogo = styled.div`
 	font-weight: bold;
 	cursor: pointer;
 `;
+const S = {
+	Header,
+	HeaderLogo,
+};

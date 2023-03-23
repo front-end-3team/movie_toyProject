@@ -52,24 +52,24 @@ function InfiniteList({
 
 	return (
 		<>
-			<List>
+			<S.List>
 				{data.pages.map(db => {
 					return db.results.map(el => (
-						<Box>
-							<ImgWrap>
-								<Img src={IMG_BASE_URL + el.poster_path} />
-							</ImgWrap>
-							<Contents>
-								<Contents_Header>
+						<S.Box>
+							<S.ImgWrap>
+								<S.Img src={IMG_BASE_URL + el.poster_path} />
+							</S.ImgWrap>
+							<S.Contents>
+								<S.Contents_Header>
 									<div>{el.title}</div>
 									<div>{el.vote_average}</div>
-								</Contents_Header>
-								<Contents_Body>{el.overview}</Contents_Body>
-							</Contents>
-						</Box>
+								</S.Contents_Header>
+								<S.Contents_Body>{el.overview}</S.Contents_Body>
+							</S.Contents>
+						</S.Box>
 					));
 				})}
-			</List>
+			</S.List>
 			<UpBtn onClick={scrollUp}>UP!</UpBtn>
 		</>
 	);
@@ -122,3 +122,13 @@ const UpBtn = styled.button`
 		background-color: orange;
 	}
 `;
+const S = {
+	List,
+	Box,
+	Img,
+	Contents,
+	Contents_Header,
+	Contents_Body,
+	ImgWrap,
+	UpBtn,
+};
