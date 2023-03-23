@@ -1,12 +1,11 @@
 import IndexHeader from './components/Layout';
 import './accept/css/reset.css';
-import UpComing from './pages/components/List/upComing/upComing';
+import HomePage from './pages/components/List/Home/home';
 function App() {
 	return (
 		<>
 			<IndexHeader />
-			{/* <HomePage /> */}
-			<UpComing />
+			<HomePage />
 		</>
 	);
 }
