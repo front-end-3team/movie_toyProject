@@ -1,12 +1,13 @@
-import IndexHeader from './components/Layout';
 import './accept/css/reset.css';
-import HomePage from './pages/components/List/Home/home';
+
+import { RouterProvider } from 'react-router-dom';
+import router from './routes/routing';
 function App() {
 	return (
 		<>
-			<IndexHeader />
-			<HomePage />
-		</>
+			<RouterProvider router={router} />
+</>
+
 	);
 }
 
