@@ -2,7 +2,7 @@ import React from 'react';
 import { useInfiniteQuery } from 'react-query';
 import styled from 'styled-components';
 import { getMovies } from '../../../../apis/api';
-import img1 from './짱구.png';
+
 const HomePage = () => {
 	const { isLoading, isError, error, data, hasNextPage, fetchNextPage } =
 		useInfiniteQuery(['colors'], getMovies, {
@@ -42,7 +42,7 @@ const HomePage = () => {
 				{data.pages.map(db => {
 					return db.results.map(el => (
 						<Box>
-							<Img src={img1} />
+							<Img />
 							<Contents>
 								<Contents_Header>
 									<div>{el.title}</div>

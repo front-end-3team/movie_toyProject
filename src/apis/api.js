@@ -1,12 +1,17 @@
-import axios from 'axios';
+import { Axios } from './@core';
 
-const api = axios.create({
-	baseURL: 'https://api.themoviedb.org/3/',
-});
+const API_KEY = process.env.REACT_APP_TMDB_API_KEY;
 
 export const getMovies = async ({ pageParam }) => {
-	const res = await api.get(
-		`/movie/popular?api_key=${process.env.REACT_APP_TMDB_API_KEY}&page=${pageParam}`,
+	const res = await Axios.get(
+		`/movie/popular?api_key=${API_KEY}&page=${pageParam}`,
+	);
+	return res.data;
+};
+
+export const getUpComing = async ({ pageParam }) => {
+	const res = await Axios.get(
+		`/movie/upcoming?api_key=${API_KEY}&language=en-US&page=${pageParam}`,
 	);
 	return res.data;
 };
