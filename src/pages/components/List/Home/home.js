@@ -2,7 +2,7 @@ import React from 'react';
 import { useInfiniteQuery } from 'react-query';
 import styled from 'styled-components';
 import { getMovies } from '../../../../apis/api';
-import CommonList from '../commonList';
+import InfiniteList from '../infiniteScroll';
 
 function HomePage() {
 	const { isLoading, isError, error, data, hasNextPage, fetchNextPage } =
@@ -12,11 +12,10 @@ function HomePage() {
 				return nextPage > currentPage.total_pages ? null : nextPage;
 			},
 		});
-	console.log(data);
 	return (
 		<>
 			<H1>Home</H1>
-			<CommonList
+			<InfiniteList
 				data={data}
 				isLoading={isLoading}
 				isError={isError}
@@ -27,7 +26,6 @@ function HomePage() {
 		</>
 	);
 }
-
 export default HomePage;
 
 const H1 = styled.h1`
