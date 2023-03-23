@@ -1,5 +1,6 @@
 import React from 'react';
 import { useInfiniteQuery } from 'react-query';
+import styled from 'styled-components';
 import { getUpComing } from '../../../../apis/api';
 import CommonList from '../commonList';
 
@@ -14,6 +15,7 @@ const UpComing = () => {
 
 	return (
 		<>
+			<H1>Up Comming</H1>
 			<CommonList
 				data={data}
 				isLoading={isLoading}
@@ -27,3 +29,9 @@ const UpComing = () => {
 };
 
 export default UpComing;
+const H1 = styled.h1`
+	background-color: rgb(132, 132, 132);
+	font-size: 60px;
+	font-weight: bold;
+	padding-left: 50px;
+`;
