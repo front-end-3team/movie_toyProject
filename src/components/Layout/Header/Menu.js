@@ -5,13 +5,17 @@ function Menu() {
 	const navigate = useNavigate();
 	console.log(navigate);
 	return (
-		<ButtonWrap>
-			<Button1 onClick={() => navigate('/nowPlaying')}>
+		<S.ButtonWrap>
+			<S.Button1 onClick={() => navigate('/nowPlaying')}>
 				now playing
-			</Button1>
-			<Button2 onClick={() => navigate('/upComing')}>upcoming</Button2>
-			<Button3 onClick={() => navigate('/topRated')}>top-rated</Button3>
-		</ButtonWrap>
+			</S.Button1>
+			<S.Button2 onClick={() => navigate('/upComing')}>
+				upcoming
+			</S.Button2>
+			<S.Button3 onClick={() => navigate('/topRated')}>
+				top-rated
+			</S.Button3>
+		</S.ButtonWrap>
 	);
 }
 export default Menu;
@@ -63,3 +67,9 @@ const Button3 = styled.button`
 		background-color: rgb(32, 32, 32);
 	}
 `;
+const S = {
+	ButtonWrap,
+	Button2,
+	Button1,
+	Button3,
+};

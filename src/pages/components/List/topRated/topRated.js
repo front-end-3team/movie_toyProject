@@ -15,7 +15,7 @@ function TopRated() {
 
 	return (
 		<>
-			<H1>Top Rated</H1>
+			<S.H1>Top Rated</S.H1>
 			<CommonList
 				data={data}
 				isLoading={isLoading}
@@ -35,3 +35,6 @@ const H1 = styled.h1`
 	font-weight: bold;
 	padding-left: 50px;
 `;
+const S = {
+	H1,
+};
