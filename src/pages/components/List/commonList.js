@@ -69,6 +69,7 @@ const Box = styled.div`
 	width: 350px;
 	border-radius: 15px;
 	margin: 40px;
+	cursor: pointer;
 `;
 const Img = styled.img`
 	height: 300px;

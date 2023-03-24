@@ -36,13 +36,11 @@ function InfiniteList({
 	//넘어갈때마다 effect실행
 	useEffect(() => {
 		window.addEventListener('scroll', handleScroll);
-		console.log('다음장');
 		return () => {
 			window.removeEventListener('scroll', handleScroll);
-			console.log('1');
 		};
 	});
-
+	console.log(data);
 	//다음장 열리는 함수
 	const loadMore = () => {
 		if (hasNextPage) {
@@ -77,6 +75,10 @@ function InfiniteList({
 
 export default InfiniteList;
 
+const MainPost = styled.img`
+	width: 1000px;
+	height: 400px;
+`;
 const List = styled.div`
 	background-color: rgb(132, 132, 132);
 	border-top: 2px solid gray;
@@ -89,6 +91,7 @@ const Box = styled.div`
 	width: 350px;
 	border-radius: 15px;
 	margin: 40px;
+	cursor: pointer;
 `;
 const Img = styled.img`
 	height: 300px;
