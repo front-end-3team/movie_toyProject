@@ -1,14 +1,21 @@
 import { Outlet, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import SearchBtn from './Button/SearchBtn';
+import '../accept/css/font.css';
+import Menu from './Layout/Header/Menu';
+
 function IndexHeader() {
 	const navigate = useNavigate();
 	return (
 		<>
 			<S.Header>
-				<S.HeaderLogo onClick={() => navigate('')}>
+				<S.HeaderLogo
+					className="headerFont"
+					onClick={() => navigate('')}
+				>
 					영화를 보CINEMA
 				</S.HeaderLogo>
+				<Menu />
 				<SearchBtn />
 			</S.Header>
 			<Outlet />
@@ -29,7 +36,7 @@ const HeaderLogo = styled.div`
 	font-size: 40px;
 	font-weight: bold;
 	cursor: pointer;
-	color: red;
+	color: rgb(147, 31, 32);
 `;
 const S = {
 	Header,
