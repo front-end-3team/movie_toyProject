@@ -11,7 +11,7 @@ function SearchList({ data, isLoading, isError, error }) {
 	}
 
 	//isError true일때 error핸들링하고
-	if (!isError) {
+	if (isError) {
 		return <Error404 />;
 	}
 	const scrollUp = () => {
