@@ -1,26 +1,28 @@
 import React from 'react';
-import { useInfiniteQuery } from 'react-query';
+import { useQuery } from 'react-query';
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import { getSearch } from '../../../../apis/api';
-
+import { queryConfig } from '../../../../apis/@queryConfig';
+import SearchList from '../searchList';
 function Search() {
-	const param = useParams();
+	const { title } = useParams();
 
-	console.log(param);
+	const { data, error, isLoading, isError } = useQuery(
+		['search'],
+		() => getSearch({ title }),
+		{ ...queryConfig },
+	);
 
-	const { isLoading, isError, error, data, hasNextPage, fetchNextPage } =
-		useInfiniteQuery(['search'], getSearch, {
-			getNextPageParam: currentPage => {
-				const nextPage = currentPage.page + 1;
-				return nextPage > currentPage.total_pages ? null : nextPage;
-			},
-		});
-
-	console.log(param);
 	return (
 		<>
 			<S.H1>Search</S.H1>
+			<SearchList
+				data={data}
+				isLoading={isLoading}
+				isError={isError}
+				error={error}
+			/>
 		</>
 	);
 }

@@ -1,14 +1,16 @@
 import { useParams } from 'react-router-dom';
+
 import { getDetail } from '../../../apis/api';
 import { useQuery } from 'react-query';
 import styled from 'styled-components';
 
+
 function Detail() {
 	const VIDEO_URL = 'https://www.youtube.com/embed/';
-
 	const IMG_BASE_URL = 'https://image.tmdb.org/t/p/original/';
 
 	const { movieId } = useParams();
+
 
 	const { isLoading, isError, data, error } = useQuery(
 		['detail'],
@@ -27,10 +29,6 @@ function Detail() {
 		return <span>Error</span>;
 	}
 
-	/*
-- 비디오 있는 경우, 페이지 진입 시 자동으로 비디오 플레이
-- 제목, 포스터, 별점, 제작 연도, 장르 데이터 활용해서 UI 표기
-*/
 
 	console.log(data);
 
@@ -58,6 +56,7 @@ function Detail() {
 			</Box>
 		</S.Body>
 	);
+
 }
 export default Detail;
 
