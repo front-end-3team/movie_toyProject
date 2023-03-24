@@ -3,7 +3,6 @@ import styled from 'styled-components';
 
 function Menu() {
 	const navigate = useNavigate();
-	console.log(navigate);
 	return (
 		<S.ButtonWrap>
 			<S.Button1 onClick={() => navigate('/nowPlaying')}>
