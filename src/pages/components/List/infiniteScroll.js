@@ -29,10 +29,12 @@ function InfiniteList({
 			loadMore();
 		}
 	};
+
 	const scrollUp = () => {
 		// top:0 >> 맨위로  behavior:smooth >> 부드럽게 이동할수 있게 설정하는 속성
 		window.scrollTo({ top: 0, behavior: 'smooth' });
 	};
+
 	//넘어갈때마다 effect실행
 	useEffect(() => {
 		window.addEventListener('scroll', handleScroll);
@@ -40,7 +42,7 @@ function InfiniteList({
 			window.removeEventListener('scroll', handleScroll);
 		};
 	});
-	console.log(data);
+
 	//다음장 열리는 함수
 	const loadMore = () => {
 		if (hasNextPage) {
@@ -50,6 +52,13 @@ function InfiniteList({
 
 	return (
 		<>
+			<S.MainPostWrap>
+				{' '}
+				<S.MainPost
+					src={IMG_BASE_URL + data.pages[0].results[0].backdrop_path}
+				></S.MainPost>
+			</S.MainPostWrap>
+
 			<S.List>
 				{data.pages.map(db => {
 					return db.results.map(el => (
@@ -76,8 +85,14 @@ function InfiniteList({
 export default InfiniteList;
 
 const MainPost = styled.img`
-	width: 1000px;
-	height: 400px;
+	width: 90%;
+	height: 550px;
+	background-color: rgb(132, 132, 132);
+`;
+const MainPostWrap = styled.div`
+	background-color: rgb(132, 132, 132);
+	display: flex;
+	justify-content: center;
 `;
 const List = styled.div`
 	background-color: rgb(132, 132, 132);
@@ -134,4 +149,6 @@ const S = {
 	Contents_Body,
 	ImgWrap,
 	UpBtn,
+	MainPost,
+	MainPostWrap,
 };

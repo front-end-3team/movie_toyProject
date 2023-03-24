@@ -12,7 +12,7 @@ function UpComing() {
 				return nextPage > currentPage.total_pages ? null : nextPage;
 			},
 		});
-
+	console.log(data);
 	return (
 		<>
 			<S.H1>Up Comming</S.H1>
