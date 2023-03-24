@@ -1,5 +1,6 @@
 import { createBrowserRouter } from 'react-router-dom';
 import IndexHeader from '../components';
+import Detail from '../pages/components/detail/detail';
 import HomePage from '../pages/components/List/Home/home';
 import NowPlaying from '../pages/components/List/nowPlaying/nowPlaying';
 import Search from '../pages/components/List/search/search';
@@ -30,7 +31,11 @@ const router = createBrowserRouter([
 			{
 				path: '/search/:title',
 				element: <Search />,
-			},
+       },
+       {
+				path: '/detail/:movieId',
+				element: <Detail />,
+			 },
 		],
 	},
 ]);
