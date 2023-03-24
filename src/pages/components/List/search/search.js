@@ -4,19 +4,25 @@ import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import { getSearch } from '../../../../apis/api';
 import { queryConfig } from '../../../../apis/@queryConfig';
+import SearchList from '../searchList';
 function Search() {
 	const { title } = useParams();
 
-	const { data, error, status, isLoading } = useQuery(
+	const { data, error, isLoading, isError } = useQuery(
 		['search'],
 		() => getSearch({ title }),
 		{ ...queryConfig },
 	);
-	console.log(isLoading);
 
 	return (
 		<>
 			<S.H1>Search</S.H1>
+			<SearchList
+				data={data}
+				isLoading={isLoading}
+				isError={isError}
+				error={error}
+			/>
 		</>
 	);
 }

@@ -1,15 +1,8 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-
-function CommonList({
-	data,
-	isLoading,
-	isError,
-	fetchNextPage,
-	hasNextPage,
-	error,
-}) {
+import Error404 from '../../../Error/error404';
+function SearchList({ data, isLoading, isError, error }) {
 	const navigate = useNavigate();
 	const IMG_BASE_URL = 'https://image.tmdb.org/t/p/original/';
 
@@ -18,26 +11,19 @@ function CommonList({
 	}
 
 	//isError true일때 error핸들링하고
-	if (isError) {
-		return <h2>{error.message}</h2>;
+	if (!isError) {
+		return <Error404 />;
 	}
 	const scrollUp = () => {
 		// top:0 >> 맨위로  behavior:smooth >> 부드럽게 이동할수 있게 설정하는 속성
 		window.scrollTo({ top: 0, behavior: 'smooth' });
 	};
 
-	const loadMore = () => {
-		if (hasNextPage) {
-			fetchNextPage();
-		}
-	};
-	console.log(data);
-
 	return (
 		<>
 			<S.List>
-				{data.pages.map(db => {
-					return db.results.map(el => (
+				{data.results.map(el => {
+					return (
 						<S.Box onClick={() => navigate(`/detail/${el.id}`)}>
 							<S.ImgWrap>
 								<S.Img src={IMG_BASE_URL + el.poster_path} />
@@ -50,16 +36,15 @@ function CommonList({
 								<S.Contents_Body>{el.overview}</S.Contents_Body>
 							</S.Contents>
 						</S.Box>
-					));
+					);
 				})}
 			</S.List>
 			<S.UpBtn onClick={scrollUp}>UP!</S.UpBtn>
-			<S.AddListBtn onClick={loadMore}>더보기</S.AddListBtn>
 		</>
 	);
 }
 
-export default CommonList;
+export default SearchList;
 
 const List = styled.div`
 	background-color: rgb(132, 132, 132);
