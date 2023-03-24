@@ -1,10 +1,20 @@
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
 function SearchBtn() {
-	const onClickSearch = () => {};
+	const [title, setTitle] = useState('');
+	const navigate = useNavigate();
+
+	const onClickSearch = () => {
+		navigate(`/search/${title}`);
+	};
+	const searchInput = e => {
+		setTitle(e.target.value);
+	};
 	return (
 		<form onSubmit={onClickSearch}>
-			<S.SearchInput />
+			<S.SearchInput onChange={searchInput} />
 			<S.Button>검색</S.Button>
 		</form>
 	);

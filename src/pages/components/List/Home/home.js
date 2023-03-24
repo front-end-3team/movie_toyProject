@@ -12,6 +12,7 @@ function HomePage() {
 				return nextPage > currentPage.total_pages ? null : nextPage;
 			},
 		});
+	console.log(data);
 	return (
 		<>
 			<S.H1>Home</S.H1>
