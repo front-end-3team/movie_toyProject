@@ -52,6 +52,13 @@ function InfiniteList({
 
 	return (
 		<>
+			<S.MainPostWrap>
+				{' '}
+				<S.MainPost
+					src={IMG_BASE_URL + data.pages[0].results[0].backdrop_path}
+				></S.MainPost>
+			</S.MainPostWrap>
+
 			<S.List>
 				{data.pages.map(db => {
 					return db.results.map(el => (
@@ -78,8 +85,14 @@ function InfiniteList({
 export default InfiniteList;
 
 const MainPost = styled.img`
-	width: 1000px;
-	height: 400px;
+	width: 90%;
+	height: 550px;
+	background-color: rgb(132, 132, 132);
+`;
+const MainPostWrap = styled.div`
+	background-color: rgb(132, 132, 132);
+	display: flex;
+	justify-content: center;
 `;
 const List = styled.div`
 	background-color: rgb(132, 132, 132);
@@ -136,4 +149,6 @@ const S = {
 	Contents_Body,
 	ImgWrap,
 	UpBtn,
+	MainPost,
+	MainPostWrap,
 };

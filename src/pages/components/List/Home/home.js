@@ -15,6 +15,7 @@ function HomePage() {
 	return (
 		<>
 			<S.H1>Home</S.H1>
+
 			<InfiniteList
 				data={data}
 				isLoading={isLoading}
@@ -34,6 +35,7 @@ const H1 = styled.h1`
 	font-weight: bold;
 	padding-left: 50px;
 `;
+
 const S = {
 	H1,
 };
