@@ -29,10 +29,12 @@ function InfiniteList({
 			loadMore();
 		}
 	};
+
 	const scrollUp = () => {
 		// top:0 >> 맨위로  behavior:smooth >> 부드럽게 이동할수 있게 설정하는 속성
 		window.scrollTo({ top: 0, behavior: 'smooth' });
 	};
+
 	//넘어갈때마다 effect실행
 	useEffect(() => {
 		window.addEventListener('scroll', handleScroll);
@@ -40,7 +42,7 @@ function InfiniteList({
 			window.removeEventListener('scroll', handleScroll);
 		};
 	});
-	console.log(data);
+
 	//다음장 열리는 함수
 	const loadMore = () => {
 		if (hasNextPage) {

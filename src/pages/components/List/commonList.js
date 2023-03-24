@@ -23,6 +23,7 @@ function CommonList({
 		// top:0 >> 맨위로  behavior:smooth >> 부드럽게 이동할수 있게 설정하는 속성
 		window.scrollTo({ top: 0, behavior: 'smooth' });
 	};
+
 	const loadMore = () => {
 		if (hasNextPage) {
 			fetchNextPage();
