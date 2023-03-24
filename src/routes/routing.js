@@ -1,5 +1,6 @@
 import { createBrowserRouter } from 'react-router-dom';
 import IndexHeader from '../components';
+import Detail from '../pages/components/detail/detail';
 import HomePage from '../pages/components/List/Home/home';
 import NowPlaying from '../pages/components/List/nowPlaying/nowPlaying';
 import TopRated from '../pages/components/List/topRated/topRated';
@@ -25,6 +26,10 @@ const router = createBrowserRouter([
 			{
 				path: '/upComing',
 				element: <UpComing />,
+			},
+			{
+				path: '/detail/:movieId',
+				element: <Detail />,
 			},
 		],
 	},

@@ -31,3 +31,11 @@ export const getNowPlaying = async ({ pageParam }) => {
 	);
 	return res.data;
 };
+
+export const getDetail = async ({ movieId }) => {
+	const res = await Axios.get(
+		`${PATH}/${movieId}?api_key=${API_KEY}&language=${LANGUAGE}&append_to_response=videos,images`,
+	);
+	console.log(res);
+	return res.data;
+};

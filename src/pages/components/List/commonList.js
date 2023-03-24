@@ -1,4 +1,5 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
 function CommonList({
@@ -9,6 +10,7 @@ function CommonList({
 	hasNextPage,
 	error,
 }) {
+	const navigate = useNavigate();
 	const IMG_BASE_URL = 'https://image.tmdb.org/t/p/original/';
 
 	if (isLoading) {
@@ -29,13 +31,13 @@ function CommonList({
 			fetchNextPage();
 		}
 	};
-
+	console.log(data);
 	return (
 		<>
 			<S.List>
 				{data.pages.map(db => {
 					return db.results.map(el => (
-						<S.Box>
+						<S.Box onClick={() => navigate(`/detail/${el.id}`)}>
 							<S.ImgWrap>
 								<S.Img src={IMG_BASE_URL + el.poster_path} />
 							</S.ImgWrap>
