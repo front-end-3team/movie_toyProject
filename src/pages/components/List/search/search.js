@@ -27,6 +27,7 @@ function Search() {
 						isLoading={isLoading}
 						isError={isError}
 						error={error}
+						title={title}
 					/>
 				</>
 			)}
