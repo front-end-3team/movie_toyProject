@@ -1,19 +1,19 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-import Error404 from '../../../Error/error404';
-function SearchList({ data, isLoading, isError, error }) {
+import NotSearch from '../../../Error/NotSearch';
+function SearchList({ data, isLoading, isError, error, title }) {
 	const navigate = useNavigate();
 	const IMG_BASE_URL = 'https://image.tmdb.org/t/p/original/';
-
+	console.log(title);
 	if (isLoading) {
 		return <h2>Loading...</h2>;
 	}
 
 	//isError true일때 error핸들링하고
-	if (isError) {
-		return <Error404 />;
-	}
+	// if (isError) {
+	// 	return <Error404 />;
+	// }
 	const scrollUp = () => {
 		// top:0 >> 맨위로  behavior:smooth >> 부드럽게 이동할수 있게 설정하는 속성
 		window.scrollTo({ top: 0, behavior: 'smooth' });
@@ -21,25 +21,37 @@ function SearchList({ data, isLoading, isError, error }) {
 
 	return (
 		<>
-			<S.List>
-				{data.results.map(el => {
-					return (
-						<S.Box onClick={() => navigate(`/detail/${el.id}`)}>
-							<S.ImgWrap>
-								<S.Img src={IMG_BASE_URL + el.poster_path} />
-							</S.ImgWrap>
-							<S.Contents>
-								<S.Contents_Header>
-									<div>{el.title}</div>
-									<div>{el.vote_average}</div>
-								</S.Contents_Header>
-								<S.Contents_Body>{el.overview}</S.Contents_Body>
-							</S.Contents>
-						</S.Box>
-					);
-				})}
-			</S.List>
-			<S.UpBtn onClick={scrollUp}>UP!</S.UpBtn>
+			{data.results.length == 0 ? (
+				<NotSearch title={title} />
+			) : (
+				<>
+					<S.List>
+						{data.results.map(el => {
+							return (
+								<S.Box
+									onClick={() => navigate(`/detail/${el.id}`)}
+								>
+									<S.ImgWrap>
+										<S.Img
+											src={IMG_BASE_URL + el.poster_path}
+										/>
+									</S.ImgWrap>
+									<S.Contents>
+										<S.Contents_Header>
+											<div>{el.title}</div>
+											<div>{el.vote_average}</div>
+										</S.Contents_Header>
+										<S.Contents_Body>
+											{el.overview}
+										</S.Contents_Body>
+									</S.Contents>
+								</S.Box>
+							);
+						})}
+					</S.List>
+					<S.UpBtn onClick={scrollUp}>UP!</S.UpBtn>
+				</>
+			)}
 		</>
 	);
 }
@@ -47,26 +59,26 @@ function SearchList({ data, isLoading, isError, error }) {
 export default SearchList;
 
 const List = styled.div`
-	background-color: rgb(132, 132, 132);
-	border-top: 2px solid gray;
+	background-color: rgb(32, 33, 36);
+
 	display: flex;
+	justify-content: center;
 	flex-wrap: wrap;
 `;
 const Box = styled.div`
 	color: white;
-	background-color: rgb(52, 52, 52);
-	width: 350px;
+	background-color: rgb(32, 33, 36);
+	width: 300px;
 	border-radius: 15px;
-	margin: 40px;
+	margin: 30px;
 	cursor: pointer;
 `;
 const Img = styled.img`
-	height: 300px;
-	width: 250px;
+	height: 320px;
+	width: 300px;
 `;
 const Contents = styled.div`
-	padding: 8px 10px;
-	border-top: 2px solid beige;
+	padding: 10px 0;
 `;
 const Contents_Header = styled.div`
 	display: flex;
@@ -76,6 +88,7 @@ const Contents_Header = styled.div`
 const Contents_Body = styled.div`
 	padding: 20px;
 	font-size: 18px;
+	color: rgb(152, 152, 152);
 `;
 const ImgWrap = styled.div`
 	display: flex;
@@ -94,9 +107,6 @@ const UpBtn = styled.button`
 		background-color: rgb(102, 102, 102);
 	}
 `;
-const AddListBtn = styled.button`
-	padding: 40px;
-`;
 const S = {
 	List,
 	Box,
@@ -106,5 +116,4 @@ const S = {
 	Contents_Body,
 	ImgWrap,
 	UpBtn,
-	AddListBtn,
 };

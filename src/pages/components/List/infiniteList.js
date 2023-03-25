@@ -12,7 +12,7 @@ function InfiniteList({
 	error,
 }) {
 	const IMG_BASE_URL = 'https://image.tmdb.org/t/p/original/';
-	console.log(data, isLoading, isError, fetchNextPage, hasNextPage, error);
+
 	// if (isLoading) {
 	// 	return <h2>Loading...</h2>;
 	// }

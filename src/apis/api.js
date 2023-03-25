@@ -2,8 +2,8 @@ import { Axios } from './@core';
 
 const API_KEY = process.env.REACT_APP_TMDB_API_KEY;
 const PATH = '/movie';
-const LANGUAGE = 'es-ur';
-
+const LANGUAGE = 'en-US';
+//en-US ko-KR
 export const getMovies = async ({ pageParam }) => {
 	const res = await Axios.get(
 		`${PATH}/popular?api_key=${API_KEY}&page=${pageParam}`,
