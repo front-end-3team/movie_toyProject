@@ -2,7 +2,7 @@ import React from 'react';
 import { useInfiniteQuery } from 'react-query';
 import styled from 'styled-components';
 import { getNowPlaying } from '../../../../apis/api';
-import CommonList from '../commonList';
+import InfiniteList from '../infiniteList';
 
 /*
 	fetchNextPage는 다음페이지에 데이터를 가져올때 사용한다.
@@ -23,8 +23,8 @@ function NowPlaying() {
 
 	return (
 		<>
-			<S.H1>Now Playing</S.H1>
-			<CommonList
+			<S.H1>현재상영작</S.H1>
+			<InfiniteList
 				data={data}
 				isLoading={isLoading}
 				isError={isError}

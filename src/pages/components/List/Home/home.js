@@ -2,7 +2,7 @@ import React from 'react';
 import { useInfiniteQuery } from 'react-query';
 import styled from 'styled-components';
 import { getMovies } from '../../../../apis/api';
-import InfiniteList from '../infiniteScroll';
+import InfiniteList from '../infiniteList';
 
 function HomePage() {
 	const { isLoading, isError, error, data, hasNextPage, fetchNextPage } =
@@ -15,7 +15,7 @@ function HomePage() {
 	console.log(data);
 	return (
 		<>
-			<S.H1>Home</S.H1>
+			<S.H1>홈</S.H1>
 			<InfiniteList
 				data={data}
 				isLoading={isLoading}

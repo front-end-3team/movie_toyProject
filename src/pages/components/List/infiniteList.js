@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
 function InfiniteList({
@@ -10,11 +11,10 @@ function InfiniteList({
 	error,
 }) {
 	const IMG_BASE_URL = 'https://image.tmdb.org/t/p/original/';
-
 	if (isLoading) {
 		return <h2>Loading...</h2>;
 	}
-
+	const navigate = useNavigate();
 	//isError true일때 error핸들링하고
 	if (isError) {
 		return <h2>{error.message}</h2>;
@@ -49,20 +49,29 @@ function InfiniteList({
 			fetchNextPage();
 		}
 	};
-
+	const random = Math.floor(Math.random() * 20);
+	console.log(data);
 	return (
 		<>
 			<S.MainPostWrap>
-				{' '}
 				<S.MainPost
-					src={IMG_BASE_URL + data.pages[0].results[0].backdrop_path}
+					src={
+						IMG_BASE_URL +
+						data.pages[0].results[random].backdrop_path
+					}
 				></S.MainPost>
+				<S.MainCont>
+					{data.pages[0].results[random].original_title}
+				</S.MainCont>
+				<S.MainCont1>
+					개봉일 : {data.pages[0].results[random].release_date}
+				</S.MainCont1>
 			</S.MainPostWrap>
 
 			<S.List>
 				{data.pages.map(db => {
 					return db.results.map(el => (
-						<S.Box>
+						<S.Box onClick={() => navigate(`/detail/${el.id}`)}>
 							<S.ImgWrap>
 								<S.Img src={IMG_BASE_URL + el.poster_path} />
 							</S.ImgWrap>
@@ -83,21 +92,39 @@ function InfiniteList({
 }
 
 export default InfiniteList;
-
+const MainCont1 = styled.div`
+	font-size: 40px;
+	color: white;
+	position: absolute;
+	bottom: 40px;
+	left: 80px;
+`;
+const MainCont = styled.div`
+	font-size: 100px;
+	font-weight: bold;
+	color: white;
+	position: absolute;
+	bottom: 80px;
+	left: 80px;
+`;
 const MainPost = styled.img`
-	width: 90%;
+	width: 92%;
 	height: 550px;
+	margin: 30px 0;
 	background-color: rgb(132, 132, 132);
+	position: relative;
 `;
 const MainPostWrap = styled.div`
 	background-color: rgb(132, 132, 132);
 	display: flex;
 	justify-content: center;
+	position: relative;
 `;
 const List = styled.div`
 	background-color: rgb(132, 132, 132);
 	border-top: 2px solid gray;
 	display: flex;
+	justify-content: center;
 	flex-wrap: wrap;
 `;
 const Box = styled.div`
@@ -105,7 +132,7 @@ const Box = styled.div`
 	background-color: rgb(52, 52, 52);
 	width: 350px;
 	border-radius: 15px;
-	margin: 40px;
+	margin: 30px;
 	cursor: pointer;
 `;
 const Img = styled.img`
@@ -150,5 +177,7 @@ const S = {
 	ImgWrap,
 	UpBtn,
 	MainPost,
+	MainCont,
 	MainPostWrap,
+	MainCont1,
 };

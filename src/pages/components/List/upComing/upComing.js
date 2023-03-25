@@ -2,7 +2,7 @@ import React from 'react';
 import { useInfiniteQuery } from 'react-query';
 import styled from 'styled-components';
 import { getUpComing } from '../../../../apis/api';
-import CommonList from '../commonList';
+import InfiniteList from '../infiniteList';
 
 function UpComing() {
 	const { isLoading, isError, error, data, hasNextPage, fetchNextPage } =
@@ -15,8 +15,8 @@ function UpComing() {
 	console.log(data);
 	return (
 		<>
-			<S.H1>Up Comming</S.H1>
-			<CommonList
+			<S.H1>상영예정작</S.H1>
+			<InfiniteList
 				data={data}
 				isLoading={isLoading}
 				isError={isError}

@@ -4,13 +4,11 @@ import { getDetail } from '../../../apis/api';
 import { useQuery } from 'react-query';
 import styled from 'styled-components';
 
-
 function Detail() {
 	const VIDEO_URL = 'https://www.youtube.com/embed/';
 	const IMG_BASE_URL = 'https://image.tmdb.org/t/p/original/';
 
 	const { movieId } = useParams();
-
 
 	const { isLoading, isError, data, error } = useQuery(
 		['detail'],
@@ -29,16 +27,15 @@ function Detail() {
 		return <span>Error</span>;
 	}
 
-
 	console.log(data);
 
 	return (
 		<S.Body>
-			<S.Video
-				src={VIDEO_URL + data.videos.results[0].key}
-				autoplay
-			></S.Video>
-
+			{data.videos.results.length == 0 ? (
+				<Img src={IMG_BASE_URL + backdrop_path} />
+			) : (
+				<S.Video src={VIDEO_URL + data.videos.results[0].key}></S.Video>
+			)}
 			<Box>
 				<Title>
 					<H1>{data.title}</H1>
@@ -56,22 +53,23 @@ function Detail() {
 			</Box>
 		</S.Body>
 	);
-
 }
 export default Detail;
 
 const Body = styled.div`
 	padding: 50px;
 	height: 809px;
-	/* background-color: green; */
 	display: flex;
+	flex-direction: column;
+	align-items: center;
 `;
-
+const Img = styled.img`
+	width: 1600px;
+	height: 800px;
+`;
 const Video = styled.iframe`
-	/* background-color: yellow; */
-
-	width: 700px;
-	height: 500px;
+	width: 1600px;
+	height: 800px;
 `;
 
 const Box = styled.div`
@@ -89,4 +87,5 @@ const H1 = styled.h1`
 const S = {
 	Body,
 	Video,
+	Img,
 };

@@ -2,7 +2,7 @@ import React from 'react';
 import { useInfiniteQuery } from 'react-query';
 import styled from 'styled-components';
 import { getTopRated } from '../../../../apis/api';
-import CommonList from '../commonList';
+import InfiniteList from '../infiniteList';
 
 function TopRated() {
 	const { isLoading, isError, error, data, hasNextPage, fetchNextPage } =
@@ -15,8 +15,8 @@ function TopRated() {
 
 	return (
 		<>
-			<S.H1>Top Rated</S.H1>
-			<CommonList
+			<S.H1>인기영화</S.H1>
+			<InfiniteList
 				data={data}
 				isLoading={isLoading}
 				isError={isError}
