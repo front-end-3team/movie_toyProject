@@ -43,6 +43,7 @@ const H1 = styled.h1`
 	padding-left: 50px;
 	background-color: rgb(32, 33, 36);
 	color: rgb(132, 132, 132);
+	padding-top: 30px;
 `;
 const S = {
 	H1,

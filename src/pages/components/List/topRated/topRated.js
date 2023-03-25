@@ -35,6 +35,7 @@ const H1 = styled.h1`
 	font-size: 60px;
 	font-weight: bold;
 	padding-left: 50px;
+	padding-top: 30px;
 `;
 const S = {
 	H1,

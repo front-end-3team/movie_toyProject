@@ -30,6 +30,7 @@ const Header = styled.div`
 	align-items: center;
 	justify-content: space-between;
 	padding: 0 50px;
+	box-shadow: 1px -11px 9px -4px inset rgba(16, 10, 10, 0.75);
 `;
 
 const HeaderLogo = styled.div`
