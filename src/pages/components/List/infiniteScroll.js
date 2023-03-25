@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import styled from 'styled-components';
+import MuiSkeleton from '../../../skeleton/skeleton';
 
 function InfiniteList({
 	data,
@@ -10,10 +11,11 @@ function InfiniteList({
 	error,
 }) {
 	const IMG_BASE_URL = 'https://image.tmdb.org/t/p/original/';
+	const length = new Array(8).fill(0);
 
-	if (isLoading) {
-		return <h2>Loading...</h2>;
-	}
+	// if (isLoading) {
+	// 	return <h2>Loading...</h2>;
+	// }
 
 	//isError true일때 error핸들링하고
 	if (isError) {
@@ -52,31 +54,43 @@ function InfiniteList({
 
 	return (
 		<>
-			<S.MainPostWrap>
-				{' '}
+			{/* <S.MainPostWrap>
 				<S.MainPost
-					src={IMG_BASE_URL + data.pages[0].results[0].backdrop_path}
+				src={IMG_BASE_URL + data.pages[0].results[0].backdrop_path}
 				></S.MainPost>
-			</S.MainPostWrap>
+			</S.MainPostWrap> */}
 
-			<S.List>
-				{data.pages.map(db => {
-					return db.results.map(el => (
-						<S.Box>
-							<S.ImgWrap>
-								<S.Img src={IMG_BASE_URL + el.poster_path} />
-							</S.ImgWrap>
-							<S.Contents>
-								<S.Contents_Header>
-									<div>{el.title}</div>
-									<div>{el.vote_average}</div>
-								</S.Contents_Header>
-								<S.Contents_Body>{el.overview}</S.Contents_Body>
-							</S.Contents>
-						</S.Box>
-					));
-				})}
-			</S.List>
+			{isLoading ? (
+				<>
+					{length.map((i, idx) => {
+						return <MuiSkeleton key={idx} />;
+					})}
+				</>
+			) : (
+				<S.List>
+					{data.pages.map(db => {
+						return db.results.map(el => (
+							<S.Box>
+								<S.ImgWrap>
+									<S.Img
+										src={IMG_BASE_URL + el.poster_path}
+									/>
+								</S.ImgWrap>
+								<S.Contents>
+									<S.Contents_Header>
+										<div>{el.title}</div>
+										<div>{el.vote_average}</div>
+									</S.Contents_Header>
+									<S.Contents_Body>
+										{el.overview}
+									</S.Contents_Body>
+								</S.Contents>
+							</S.Box>
+						));
+					})}
+				</S.List>
+			)}
+
 			<UpBtn onClick={scrollUp}>UP!</UpBtn>
 		</>
 	);

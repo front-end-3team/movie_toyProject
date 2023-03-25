@@ -16,6 +16,7 @@ function HomePage() {
 	return (
 		<>
 			<S.H1>Home</S.H1>
+
 			<InfiniteList
 				data={data}
 				isLoading={isLoading}
