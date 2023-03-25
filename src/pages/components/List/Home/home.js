@@ -30,10 +30,11 @@ function HomePage() {
 export default HomePage;
 
 const H1 = styled.h1`
-	background-color: rgb(132, 132, 132);
 	font-size: 60px;
 	font-weight: bold;
 	padding-left: 50px;
+	background-color: rgb(32, 33, 36);
+	color: rgb(132, 132, 132);
 `;
 
 const S = {

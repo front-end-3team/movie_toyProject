@@ -30,7 +30,8 @@ function TopRated() {
 export default TopRated;
 
 const H1 = styled.h1`
-	background-color: rgb(132, 132, 132);
+	background-color: rgb(32, 33, 36);
+	color: rgb(132, 132, 132);
 	font-size: 60px;
 	font-weight: bold;
 	padding-left: 50px;

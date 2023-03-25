@@ -82,14 +82,16 @@ const ImgWrap = styled.div`
 	justify-content: center;
 `;
 const UpBtn = styled.button`
-	padding: 30px;
+	padding: 22px;
 	border-radius: 50%;
-	background-color: yellow;
+	background-color: rgb(152, 152, 152);
 	position: sticky;
-	left: 90%;
+	left: 92%;
 	bottom: 100px;
+	box-shadow: -5px -5px rgb(102, 102, 102) inset;
+	border: none;
 	:hover {
-		background-color: orange;
+		background-color: rgb(102, 102, 102);
 	}
 `;
 const AddListBtn = styled.button`

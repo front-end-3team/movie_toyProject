@@ -24,13 +24,12 @@ function IndexHeader() {
 }
 export default IndexHeader;
 const Header = styled.div`
-	background-color: rgb(132, 132, 132);
+	background-color: rgb(32, 33, 36);
 	height: 100px;
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
 	padding: 0 50px;
-	border-bottom: 1px solid black;
 `;
 
 const HeaderLogo = styled.div`

@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import { getSearch } from '../../../../apis/api';
 import { queryConfig } from '../../../../apis/@queryConfig';
 import SearchList from '../searchList';
+import DetailSkeleton from '../../../../skeleton/detailSkeleton';
 function Search() {
 	const { title } = useParams();
 
@@ -17,19 +18,26 @@ function Search() {
 	return (
 		<>
 			<S.H1>Search</S.H1>
-			<SearchList
-				data={data}
-				isLoading={isLoading}
-				isError={isError}
-				error={error}
-			/>
+			{isLoading ? (
+				<DetailSkeleton />
+			) : (
+				<>
+					<SearchList
+						data={data}
+						isLoading={isLoading}
+						isError={isError}
+						error={error}
+					/>
+				</>
+			)}
 		</>
 	);
 }
 export default Search;
 
 const H1 = styled.h1`
-	background-color: rgb(132, 132, 132);
+	background-color: rgb(32, 33, 36);
+	color: rgb(132, 132, 132);
 	font-size: 60px;
 	font-weight: bold;
 	padding-left: 50px;

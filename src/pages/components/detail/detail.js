@@ -31,11 +31,11 @@ function Detail() {
 
 	return (
 		<S.Body>
-			{data.videos.results.length == 0 ? (
-				<Img src={IMG_BASE_URL + backdrop_path} />
+			{/* {data.videos.results.length == 0 ? (
+				<Img src={IMG_BASE_URL + data.backdrop_path} />
 			) : (
 				<S.Video src={VIDEO_URL + data.videos.results[0].key}></S.Video>
-			)}
+			)} */}
 			<Box>
 				<Title>
 					<H1>{data.title}</H1>

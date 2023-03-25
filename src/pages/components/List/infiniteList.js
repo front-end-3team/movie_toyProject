@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
+import MuiSkeleton from '../../../skeleton/skeleton';
 
 function InfiniteList({
 	data,
@@ -11,9 +12,10 @@ function InfiniteList({
 	error,
 }) {
 	const IMG_BASE_URL = 'https://image.tmdb.org/t/p/original/';
-	if (isLoading) {
-		return <h2>Loading...</h2>;
-	}
+	console.log(data, isLoading, isError, fetchNextPage, hasNextPage, error);
+	// if (isLoading) {
+	// 	return <h2>Loading...</h2>;
+	// }
 	const navigate = useNavigate();
 	//isError true일때 error핸들링하고
 	if (isError) {
@@ -53,40 +55,53 @@ function InfiniteList({
 	console.log(data);
 	return (
 		<>
-			<S.MainPostWrap>
-				<S.MainPost
-					src={
-						IMG_BASE_URL +
-						data.pages[0].results[random].backdrop_path
-					}
-				></S.MainPost>
-				<S.MainCont>
-					{data.pages[0].results[random].original_title}
-				</S.MainCont>
-				<S.MainCont1>
-					개봉일 : {data.pages[0].results[random].release_date}
-				</S.MainCont1>
-			</S.MainPostWrap>
-
-			<S.List>
-				{data.pages.map(db => {
-					return db.results.map(el => (
-						<S.Box onClick={() => navigate(`/detail/${el.id}`)}>
-							<S.ImgWrap>
-								<S.Img src={IMG_BASE_URL + el.poster_path} />
-							</S.ImgWrap>
-							<S.Contents>
-								<S.Contents_Header>
-									<div>{el.title}</div>
-									<div>{el.vote_average}</div>
-								</S.Contents_Header>
-								<S.Contents_Body>{el.overview}</S.Contents_Body>
-							</S.Contents>
-						</S.Box>
-					));
-				})}
-			</S.List>
-			<UpBtn onClick={scrollUp}>UP!</UpBtn>
+			{isLoading ? (
+				<MuiSkeleton />
+			) : (
+				<>
+					{' '}
+					<S.MainPostWrap>
+						<S.MainPost
+							src={
+								IMG_BASE_URL +
+								data.pages[0].results[random].backdrop_path
+							}
+						></S.MainPost>
+						<S.MainCont>
+							{data.pages[0].results[random].original_title}
+						</S.MainCont>
+						<S.MainCont1>
+							개봉일 :{' '}
+							{data.pages[0].results[random].release_date}
+						</S.MainCont1>
+					</S.MainPostWrap>
+					<S.List>
+						{data.pages.map(db => {
+							return db.results.map(el => (
+								<S.Box
+									onClick={() => navigate(`/detail/${el.id}`)}
+								>
+									<S.ImgWrap>
+										<S.Img
+											src={IMG_BASE_URL + el.poster_path}
+										/>
+									</S.ImgWrap>
+									<S.Contents>
+										<S.Contents_Header>
+											<div>{el.title}</div>
+											<div>{el.vote_average}</div>
+										</S.Contents_Header>
+										<S.Contents_Body>
+											{el.overview}
+										</S.Contents_Body>
+									</S.Contents>
+								</S.Box>
+							));
+						})}
+					</S.List>
+					<UpBtn onClick={scrollUp}>UP!</UpBtn>
+				</>
+			)}
 		</>
 	);
 }
@@ -115,33 +130,32 @@ const MainPost = styled.img`
 	position: relative;
 `;
 const MainPostWrap = styled.div`
-	background-color: rgb(132, 132, 132);
+	background-color: rgb(32, 33, 36);
 	display: flex;
 	justify-content: center;
 	position: relative;
 `;
 const List = styled.div`
-	background-color: rgb(132, 132, 132);
-	border-top: 2px solid gray;
+	background-color: rgb(32, 33, 36);
+
 	display: flex;
 	justify-content: center;
 	flex-wrap: wrap;
 `;
 const Box = styled.div`
 	color: white;
-	background-color: rgb(52, 52, 52);
-	width: 350px;
+	background-color: rgb(32, 33, 36);
+	width: 300px;
 	border-radius: 15px;
 	margin: 30px;
 	cursor: pointer;
 `;
 const Img = styled.img`
-	height: 300px;
-	width: 250px;
+	height: 320px;
+	width: 300px;
 `;
 const Contents = styled.div`
-	padding: 8px 10px;
-	border-top: 2px solid beige;
+	padding: 10px 0;
 `;
 const Contents_Header = styled.div`
 	display: flex;
@@ -151,20 +165,23 @@ const Contents_Header = styled.div`
 const Contents_Body = styled.div`
 	padding: 20px;
 	font-size: 18px;
+	color: rgb(152, 152, 152);
 `;
 const ImgWrap = styled.div`
 	display: flex;
 	justify-content: center;
 `;
 const UpBtn = styled.button`
-	padding: 30px;
+	padding: 22px;
 	border-radius: 50%;
-	background-color: yellow;
+	background-color: rgb(152, 152, 152);
 	position: sticky;
-	left: 90%;
+	left: 92%;
 	bottom: 100px;
+	box-shadow: -5px -5px rgb(102, 102, 102) inset;
+	border: none;
 	:hover {
-		background-color: orange;
+		background-color: rgb(102, 102, 102);
 	}
 `;
 const S = {
