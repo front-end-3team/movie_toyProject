@@ -1,21 +1,21 @@
 import React from 'react';
 import { useInfiniteQuery } from 'react-query';
 import styled from 'styled-components';
-import { getMovies } from '../../../../apis/api';
-import InfiniteList from '../infiniteList';
+import { getUpComing } from '../../../Apis/api';
+import InfiniteList from '../../infiniteList';
 
-function HomePage() {
+function UpComing() {
 	const { isLoading, isError, error, data, hasNextPage, fetchNextPage } =
-		useInfiniteQuery(['HomePage'], getMovies, {
+		useInfiniteQuery(['upComing'], getUpComing, {
 			getNextPageParam: currentPage => {
 				const nextPage = currentPage.page + 1;
 				return nextPage > currentPage.total_pages ? null : nextPage;
 			},
 		});
-	console.log(isLoading);
+
 	return (
 		<>
-			<S.H1>홈</S.H1>
+			<S.H1>상영예정작</S.H1>
 			<InfiniteList
 				data={data}
 				isLoading={isLoading}
@@ -27,17 +27,16 @@ function HomePage() {
 		</>
 	);
 }
-export default HomePage;
 
+export default UpComing;
 const H1 = styled.h1`
+	background-color: rgb(32, 33, 36);
+	color: rgb(132, 132, 132);
 	font-size: 60px;
 	font-weight: bold;
 	padding-left: 50px;
-	background-color: rgb(32, 33, 36);
-	color: rgb(132, 132, 132);
 	padding-top: 30px;
 `;
-
 const S = {
 	H1,
 };

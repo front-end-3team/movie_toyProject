@@ -2,10 +2,10 @@ import React from 'react';
 import { useQuery } from 'react-query';
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
-import { getSearch } from '../../../../apis/api';
-import { queryConfig } from '../../../../apis/@queryConfig';
-import SearchList from '../searchList';
-import DetailSkeleton from '../../../../skeleton/detailSkeleton';
+import { getSearch } from '../../../Apis/api';
+import { queryConfig } from '../../../Config/@queryConfig';
+import SearchList from '../../searchList';
+import DetailSkeleton from '../../../Skeleton/detailSkeleton';
 function Search() {
 	const { title } = useParams();
 
