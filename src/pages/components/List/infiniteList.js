@@ -88,8 +88,8 @@ function InfiniteList({
 									</S.ImgWrap>
 									<S.Contents>
 										<S.Contents_Header>
-											<div>{el.title}</div>
-											<div>{el.vote_average}</div>
+											<S.Title>{el.title}</S.Title>
+											<div>⭐️ {el.vote_average}</div>
 										</S.Contents_Header>
 										<S.Contents_Body>
 											{el.overview.substr(0, 100) + '...'}
@@ -184,6 +184,9 @@ const UpBtn = styled.button`
 		background-color: rgb(102, 102, 102);
 	}
 `;
+const Title = styled.div`
+	max-width: 150px;
+`;
 const S = {
 	List,
 	Box,
@@ -197,4 +200,5 @@ const S = {
 	MainCont,
 	MainPostWrap,
 	MainCont1,
+	Title,
 };
