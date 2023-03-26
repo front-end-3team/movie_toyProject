@@ -113,6 +113,7 @@ const MainCont = styled.div`
 	position: absolute;
 	bottom: 80px;
 	left: 180px;
+	max-width: 60%;
 `;
 const MainPost = styled.img`
 	width: 80%;

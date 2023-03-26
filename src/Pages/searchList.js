@@ -32,8 +32,10 @@ function SearchList({ data, isLoading, isError, error, title }) {
 									</S.ImgWrap>
 									<S.Contents>
 										<S.Contents_Header>
-											<div>{el.title}</div>
-											<div>{el.vote_average}</div>
+											<S.Title>{el.title}</S.Title>
+											<div>
+												⭐️ {el.vote_average.toFixed(1)}
+											</div>
 										</S.Contents_Header>
 										<S.Contents_Body>
 											{el.overview.substr(0, 100) + '...'}
@@ -54,6 +56,7 @@ export default SearchList;
 const Div = styled.div`
 	background-color: rgb(32, 33, 36);
 `;
+
 const List = styled.div`
 	background-color: rgb(32, 33, 36);
 
@@ -68,6 +71,9 @@ const Box = styled.div`
 	border-radius: 15px;
 	margin: 30px;
 	cursor: pointer;
+	:hover {
+		filter: brightness(60%);
+	}
 `;
 const Img = styled.img`
 	height: 320px;
@@ -82,7 +88,7 @@ const Contents_Header = styled.div`
 	font-size: 20px;
 `;
 const Contents_Body = styled.div`
-	padding: 20px;
+	padding-top: 20px;
 	font-size: 18px;
 	color: rgb(152, 152, 152);
 `;
@@ -103,6 +109,10 @@ const UpBtn = styled.button`
 		background-color: rgb(102, 102, 102);
 	}
 `;
+const Title = styled.div`
+	max-width: 150px;
+`;
+
 const S = {
 	List,
 	Box,
@@ -112,4 +122,5 @@ const S = {
 	Contents_Body,
 	ImgWrap,
 	UpBtn,
+	Title,
 };
