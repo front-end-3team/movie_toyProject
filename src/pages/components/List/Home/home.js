@@ -12,7 +12,7 @@ function HomePage() {
 				return nextPage > currentPage.total_pages ? null : nextPage;
 			},
 		});
-	console.log(data);
+	console.log(isLoading);
 	return (
 		<>
 			<S.H1>홈</S.H1>

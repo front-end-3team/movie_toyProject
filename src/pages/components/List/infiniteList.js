@@ -112,7 +112,7 @@ const MainCont1 = styled.div`
 	color: white;
 	position: absolute;
 	bottom: 40px;
-	left: 80px;
+	left: 180px;
 `;
 const MainCont = styled.div`
 	font-size: 100px;
@@ -120,10 +120,10 @@ const MainCont = styled.div`
 	color: white;
 	position: absolute;
 	bottom: 80px;
-	left: 80px;
+	left: 180px;
 `;
 const MainPost = styled.img`
-	width: 92%;
+	width: 80%;
 	height: 550px;
 	margin: 30px 0;
 	background-color: rgb(132, 132, 132);
@@ -149,6 +149,9 @@ const Box = styled.div`
 	border-radius: 15px;
 	margin: 30px;
 	cursor: pointer;
+	:hover {
+		filter: brightness(60%);
+	}
 `;
 const Img = styled.img`
 	height: 320px;
@@ -163,7 +166,7 @@ const Contents_Header = styled.div`
 	font-size: 20px;
 `;
 const Contents_Body = styled.div`
-	padding: 20px;
+	padding-top: 20px;
 	font-size: 18px;
 	color: rgb(152, 152, 152);
 `;
