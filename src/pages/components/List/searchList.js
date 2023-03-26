@@ -42,7 +42,7 @@ function SearchList({ data, isLoading, isError, error, title }) {
 											<div>{el.vote_average}</div>
 										</S.Contents_Header>
 										<S.Contents_Body>
-											{el.overview}
+											{el.overview.substr(0, 100) + '...'}
 										</S.Contents_Body>
 									</S.Contents>
 								</S.Box>
