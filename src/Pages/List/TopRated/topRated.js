@@ -1,21 +1,21 @@
 import React from 'react';
 import { useInfiniteQuery } from 'react-query';
 import styled from 'styled-components';
-import { getUpComing } from '../../../../apis/api';
-import InfiniteList from '../infiniteList';
+import { getTopRated } from '../../../Apis/api';
+import InfiniteList from '../../infiniteList';
 
-function UpComing() {
+function TopRated() {
 	const { isLoading, isError, error, data, hasNextPage, fetchNextPage } =
-		useInfiniteQuery(['upComing'], getUpComing, {
+		useInfiniteQuery(['topRated'], getTopRated, {
 			getNextPageParam: currentPage => {
 				const nextPage = currentPage.page + 1;
 				return nextPage > currentPage.total_pages ? null : nextPage;
 			},
 		});
-	console.log(data);
+
 	return (
 		<>
-			<S.H1>상영예정작</S.H1>
+			<S.H1>인기영화</S.H1>
 			<InfiniteList
 				data={data}
 				isLoading={isLoading}
@@ -27,8 +27,8 @@ function UpComing() {
 		</>
 	);
 }
+export default TopRated;
 
-export default UpComing;
 const H1 = styled.h1`
 	background-color: rgb(32, 33, 36);
 	color: rgb(132, 132, 132);

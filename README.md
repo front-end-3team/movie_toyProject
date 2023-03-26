@@ -1,21 +1,70 @@
-### ❗️기능구현❗️
+## ⭐️ 프로젝트 설명
 
--   react-qurey를 사용하여 데이터를 캐싱한다.
--   로딩 중에는 목록 가장 하단 부에 skelton UI를 보인다.
--   list는 useInfinitQuery를 사용하여 무한스크롤링으로 불러온다.
--   ScrollUp button 누를 시 최상단으로 스크롤 이동
+-   [TheMovieDataBase API](https://developers.themoviedb.org/3/movies/get-movie-videos)를 활용한 영화 목록 및 조회 사이트입니다.
 
 ---
 
-코드 컨벤션
+## 배포주소
 
-함수명 : camel case형식
+-   [영화를 보CINEMA](movie-toy-project.vercel.app)
 
-이벤트 함수명: 시작을 on~ 이름으로 기능을 알수있도록 => 화살표 함수 사용
+---
 
-ES6문법에서 스프레드 연산자, var 사용 금지, const 주로 사용
+## 프로젝트 폴더구조
 
-styled-components를 사용하기
+```
+src
+├── App.js
+├── index.js
+│
+├── Accept
+│    └─ css
+│        ├── font.css
+│        └── reset.css
+│
+├── Apis
+│     ├── @core.js
+│     └── api.js
+│
+├── Config ── @queryConfig.js
+│
+├── Error
+│   ├── error404.js
+│   └── NotSearch.js
+│
+├── pages
+│   ├── Detail ── detail.js
+│   ├── infiniteList.js
+│   ├── searchList.js
+│   └── List
+│        ├── Home ── home.js
+│        ├── NowPlaying ── nowPlaying.js
+│        ├── TopRated ── topRated.js
+│        ├── UpComing ── upComing.js
+│        └── Search ── search.js
+│
+├── Routes ── routing.js
+│
+├── Components
+│   ├── Button ── SearchBtn.js
+│   ├── index.js
+│   └── Layout
+│          └── Header ── menu.js
+│
+└── Skeleton
+        ├── detailSkeleton.js
+        └── skeleton.js
+```
+
+---
+
+### ❗️기능구현❗️
+
+-   react-qurey를 사용하여 데이터를 캐싱한다.
+-   로딩 중에는 skelton UI를 보인다.
+-   영화목록 같은 경우는 useInfinitQuery를 사용하여 무한스크롤링으로 불러온다.
+-   ScrollUp button 누를 시 최상단으로 스크롤 이동
+-   목록은 홈, 인기, 상영예정, 현재상영작, 검색창으로 구성
 
 ---
 
@@ -37,7 +86,14 @@ styled-components를 사용하기
 
 ### 팀원
 
-|                                                           박선영                                                           |                                                                         김태기                                                                          |
-| :------------------------------------------------------------------------------------------------------------------------: | :-----------------------------------------------------------------------------------------------------------------------------------------------------: |
-|                                                         구현 기능                                                          |                                                                        구현 기능                                                                        |
+| 박선영                                                                                                                     | 김태기                                                                                                                                                  |
+| :------------------------------------------------------------------------------------------------------------------------- | :------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| 구현 기능                                                                                                                  | 구현 기능                                                                                                                                               |
 | ▫️ 오픈 API 가져오기<br/>▫️ 전체 페이지 Routing<br/>▫️ 상세페이지<br/>▫️ 인기영화 Page<br/>▫️ 로딩 중 Skelton UI 구현<br/> | ▫️ 리액트 쿼리의 useInfinitQuery 무한 스크롤링 구현<br/>▫️ 오픈 API 가져오기<br/>▫️ 홈페이지<br/>▫️ 검색 기능 및 Search Page<br/>▫️ 상영예정작Page<br/> |
+
+### 기술스택
+
+|       |                                                                                                                                 |     |     |     |
+| :---: | ------------------------------------------------------------------------------------------------------------------------------: | --- | --- | --- |
+|  JS   | <img  width="60" src="https://user-images.githubusercontent.com/112946860/225957694-7e3b3669-9216-4271-a7c8-555c8976368b.png"/> |
+| React | <img width="60" src="https://user-images.githubusercontent.com/112946860/225957071-10a74540-d7b5-457c-821e-91547e62a429.png" /> |

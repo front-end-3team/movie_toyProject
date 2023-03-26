@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-import MuiSkeleton from '../../../skeleton/skeleton';
+import MuiSkeleton from '../Skeleton/skeleton';
 
 function InfiniteList({
 	data,
@@ -13,16 +13,11 @@ function InfiniteList({
 }) {
 	const IMG_BASE_URL = 'https://image.tmdb.org/t/p/original/';
 
-	// if (isLoading) {
-	// 	return <h2>Loading...</h2>;
-	// }
 	const navigate = useNavigate();
-	//isError true일때 error핸들링하고
 	if (isError) {
 		return <h2>{error.message}</h2>;
 	}
 
-	//scrolltop + clientHeigt 가 scrollHeight보다 높으면 스크롤 다 내린거임
 	const handleScroll = () => {
 		const scrollHeight = document.documentElement.scrollHeight;
 		const scrollTop = document.documentElement.scrollTop;
@@ -33,11 +28,9 @@ function InfiniteList({
 	};
 
 	const scrollUp = () => {
-		// top:0 >> 맨위로  behavior:smooth >> 부드럽게 이동할수 있게 설정하는 속성
 		window.scrollTo({ top: 0, behavior: 'smooth' });
 	};
 
-	//넘어갈때마다 effect실행
 	useEffect(() => {
 		window.addEventListener('scroll', handleScroll);
 		return () => {
@@ -45,7 +38,6 @@ function InfiniteList({
 		};
 	});
 
-	//다음장 열리는 함수
 	const loadMore = () => {
 		if (hasNextPage) {
 			fetchNextPage();
@@ -53,7 +45,7 @@ function InfiniteList({
 	};
 
 	const random = Math.floor(Math.random() * 20);
-	console.log(data);
+
 	return (
 		<>
 			{isLoading ? (

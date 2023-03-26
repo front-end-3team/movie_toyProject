@@ -1,8 +1,8 @@
 import { Outlet, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import SearchBtn from './Button/SearchBtn';
-import '../accept/css/font.css';
-import Menu from './Layout/Header/Menu';
+import '../Accept/css/font.css';
+import Menu from './Layout/Header/menu';
 
 function IndexHeader() {
 	const navigate = useNavigate();

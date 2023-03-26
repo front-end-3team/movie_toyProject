@@ -1,26 +1,20 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-import NotSearch from '../../../Error/NotSearch';
+import NotSearch from '../Error/NotSearch';
 function SearchList({ data, isLoading, isError, error, title }) {
 	const navigate = useNavigate();
 	const IMG_BASE_URL = 'https://image.tmdb.org/t/p/original/';
-	console.log(title);
 	if (isLoading) {
 		return <h2>Loading...</h2>;
 	}
 
-	//isError true일때 error핸들링하고
-	// if (isError) {
-	// 	return <Error404 />;
-	// }
 	const scrollUp = () => {
-		// top:0 >> 맨위로  behavior:smooth >> 부드럽게 이동할수 있게 설정하는 속성
 		window.scrollTo({ top: 0, behavior: 'smooth' });
 	};
 
 	return (
-		<>
+		<Div>
 			{data.results.length == 0 ? (
 				<NotSearch title={title} />
 			) : (
@@ -52,12 +46,14 @@ function SearchList({ data, isLoading, isError, error, title }) {
 					<S.UpBtn onClick={scrollUp}>UP!</S.UpBtn>
 				</>
 			)}
-		</>
+		</Div>
 	);
 }
 
 export default SearchList;
-
+const Div = styled.div`
+	background-color: rgb(32, 33, 36);
+`;
 const List = styled.div`
 	background-color: rgb(32, 33, 36);
 

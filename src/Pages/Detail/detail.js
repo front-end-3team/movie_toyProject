@@ -1,6 +1,6 @@
 import { useParams } from 'react-router-dom';
 
-import { getDetail } from '../../../apis/api';
+import { getDetail } from '../../Apis/api';
 import { useQuery } from 'react-query';
 import styled from 'styled-components';
 
@@ -26,16 +26,14 @@ function Detail() {
 	if (isError) {
 		return <span>Error</span>;
 	}
-
-	console.log(data);
-
+	//<Img src={IMG_BASE_URL + data.backdrop_path} />
 	return (
 		<S.Body>
 			<S.BackImg src={IMG_BASE_URL + data.backdrop_path} />
 			<S.PostImg src={IMG_BASE_URL + data.poster_path} />
 			<S.Post>
 				{data.videos.results.length == 0 ? (
-					<Img src={IMG_BASE_URL + data.backdrop_path} />
+					<S.Blank></S.Blank>
 				) : (
 					<S.Video
 						src={
@@ -65,6 +63,10 @@ function Detail() {
 	);
 }
 export default Detail;
+const Blank = styled.div`
+	background-color: rgb(32, 33, 36);
+	height: 101px;
+`;
 const Post = styled.div`
 	padding: 50px 0;
 	background-color: rgb(32, 33, 36);
@@ -156,4 +158,5 @@ const S = {
 	OverView,
 	Div,
 	Post,
+	Blank,
 };
