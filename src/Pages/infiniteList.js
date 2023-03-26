@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
-import MuiSkeleton from '../Skeleton/skeleton';
+import MuiSkeleton from '../skeleton/skeleton';
 
 function InfiniteList({
 	data,

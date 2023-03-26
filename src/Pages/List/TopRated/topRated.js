@@ -1,7 +1,7 @@
 import React from 'react';
 import { useInfiniteQuery } from 'react-query';
 import styled from 'styled-components';
-import { getTopRated } from '../../../Apis/api';
+import { getTopRated } from '../../../apis/api';
 import InfiniteList from '../../infiniteList';
 
 function TopRated() {
