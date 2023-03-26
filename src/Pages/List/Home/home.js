@@ -1,7 +1,7 @@
 import React from 'react';
 import { useInfiniteQuery } from 'react-query';
 import styled from 'styled-components';
-import { getMovies } from '../../../Apis/api';
+import { getMovies } from '../../../apis/api';
 import InfiniteList from '../../infiniteList';
 
 function HomePage() {

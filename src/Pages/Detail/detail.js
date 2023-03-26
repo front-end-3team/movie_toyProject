@@ -1,6 +1,6 @@
 import { useParams } from 'react-router-dom';
 
-import { getDetail } from '../../Apis/api';
+import { getDetail } from '../../apis/api';
 import { useQuery } from 'react-query';
 import styled from 'styled-components';
 

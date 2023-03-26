@@ -1,6 +1,6 @@
-import '../src/Accept/css/reset.css';
 import { RouterProvider } from 'react-router-dom';
 import Router from './Routes/route';
+import '../src/accept/css/reset.css';
 import { QueryClient, QueryClientProvider } from 'react-query';
 
 function App() {

@@ -1,5 +1,5 @@
 import { createBrowserRouter } from 'react-router-dom';
-import IndexHeader from '../Components/index';
+import IndexHeader from '../components/index';
 import HomePage from '../Pages/List/Home/home';
 import TopRate from '../Pages/List/TopRated/topRated';
 import NowPlaying from '../Pages/List/NowPlaying/nowPlaying';
