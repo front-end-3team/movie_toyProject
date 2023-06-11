@@ -24,18 +24,12 @@ const ButtonWrap = styled.div`
 	display: flex;
 `;
 const Button2 = styled.button`
-	padding: 17px 50px;
+	padding: 17px 20px;
 	border: none;
-	font-size: 20px;
+	font-size: ${({ theme }) => theme.FONT_SIZE.tiny};
 	color: white;
 	cursor: pointer;
-	background-color: rgb(32, 33, 36);
-	:hover {
-		background-color: rgb(62, 62, 62);
-	}
-	:focus {
-		background-color: rgb(32, 32, 32);
-	}
+	background-color: transparent;
 `;
 
 const S = {

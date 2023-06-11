@@ -13,7 +13,7 @@ function HomePage() {
 			},
 		});
 	return (
-		<>
+		<S.Wrapper>
 			<S.H1>홈</S.H1>
 			<InfiniteList
 				data={data}
@@ -23,20 +23,26 @@ function HomePage() {
 				hasNextPage={hasNextPage}
 				error={error}
 			/>
-		</>
+		</S.Wrapper>
 	);
 }
 export default HomePage;
 
+const Wrapper = styled.div`
+	position: relative;
+`;
 const H1 = styled.h1`
 	font-size: 60px;
 	font-weight: bold;
 	padding-left: 50px;
-	background-color: rgb(32, 33, 36);
 	color: rgb(132, 132, 132);
-	padding-top: 30px;
+	position: absolute;
+	z-index: 999;
+	top: 2rem;
+	left: 2rem;
 `;
 
 const S = {
 	H1,
+	Wrapper,
 };

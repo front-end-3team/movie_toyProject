@@ -46,6 +46,7 @@ function InfiniteList({
 
 	const random = Math.floor(Math.random() * 20);
 
+	console.log({ data });
 	return (
 		<>
 			{isLoading ? (
@@ -116,10 +117,8 @@ const MainCont = styled.div`
 	max-width: 60%;
 `;
 const MainPost = styled.img`
-	width: 80%;
-	height: 550px;
-	margin: 30px 0;
-	background-color: rgb(132, 132, 132);
+	width: 100%;
+	/* height: 550px; */
 	position: relative;
 `;
 const MainPostWrap = styled.div`
@@ -129,7 +128,7 @@ const MainPostWrap = styled.div`
 	position: relative;
 `;
 const List = styled.div`
-	background-color: rgb(32, 33, 36);
+	background-color: ${({ theme }) => theme.COLOR.common.black};
 
 	display: flex;
 	justify-content: center;
