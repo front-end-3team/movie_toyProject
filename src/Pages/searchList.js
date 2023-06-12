@@ -45,7 +45,9 @@ function SearchList({ data, isLoading, isError, error, title }) {
 							);
 						})}
 					</S.List>
-					<S.UpBtn onClick={scrollUp}>UP!</S.UpBtn>
+					<S.UpBtn onClick={scrollUp} scroll={scroll}>
+						UP
+					</S.UpBtn>
 				</>
 			)}
 		</Div>
@@ -102,14 +104,20 @@ const ImgWrap = styled.div`
 	${FlexJustifyCSS}
 `;
 const UpBtn = styled.button`
-	padding: 22px;
+	font-weight: bold;
+	font-size: 15px;
+	padding: 20px 15px;
+	background-color: #000;
+	color: #fff;
+	border: 2px solid rgb(210, 204, 193);
 	border-radius: 50%;
-	background-color: rgb(152, 152, 152);
+	outline: none;
+	cursor: pointer;
 	position: sticky;
 	left: 92%;
 	bottom: 100px;
-	box-shadow: -5px -5px rgb(102, 102, 102) inset;
-	border: none;
+	display: none;
+	display: ${({ scroll }) => (scroll ? 'block' : 'none')};
 	:hover {
 		background-color: rgb(102, 102, 102);
 	}
