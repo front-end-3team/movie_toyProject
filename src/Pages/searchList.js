@@ -21,10 +21,11 @@ function SearchList({ data, isLoading, isError, error, title }) {
 			) : (
 				<>
 					<S.List>
-						{data.results.map(el => {
+						{data.results.map((el, idx) => {
 							return (
 								<S.Box
 									onClick={() => navigate(`/detail/${el.id}`)}
+									key={idx}
 								>
 									<S.ImgWrap>
 										<S.Img

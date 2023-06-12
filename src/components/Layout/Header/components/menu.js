@@ -32,8 +32,8 @@ function Menu() {
 	}, [location]);
 	return (
 		<S.ButtonWrap>
-			{list.map(el => (
-				<S.Button2 onClick={() => navigate(el.url)}>
+			{list.map((el, idx) => (
+				<S.Button2 onClick={() => navigate(el.url)} key={idx}>
 					<span>{el.Title}</span>
 					{locationUrl === el.url && <S.Dot />}
 				</S.Button2>

@@ -26,7 +26,7 @@ function Detail() {
 	if (isError) {
 		return <span>Error</span>;
 	}
-	//<Img src={IMG_BASE_URL + data.backdrop_path} />
+
 	return (
 		<S.Body>
 			<S.BackImg src={IMG_BASE_URL + data.backdrop_path} />
@@ -53,8 +53,8 @@ function Detail() {
 					<S.Date>제작년도: {data.release_date}</S.Date>
 				</Title_1>
 				<S.Genres>장르: </S.Genres>
-				{data.genres.map(el => (
-					<S.Genres>{el.name}</S.Genres>
+				{data.genres.map((el, idx) => (
+					<S.Genres key={idx}>{el.name}</S.Genres>
 				))}
 				<Div>줄거리: </Div>
 				<S.OverView>{data.overview}</S.OverView>
@@ -102,7 +102,7 @@ const PostImg = styled.img`
 	width: 350px;
 	height: 500px;
 	position: absolute;
-	left: 220px;
+	left: 178px;
 	top: 200px;
 `;
 const BackImg = styled.img`
@@ -130,7 +130,7 @@ const Video = styled.iframe`
 
 const Box = styled.div`
 	padding-left: 50px;
-	width: 1000px;
+	width: 950px;
 	position: absolute;
 	left: 550px;
 	top: 200px;

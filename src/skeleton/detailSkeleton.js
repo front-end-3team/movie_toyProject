@@ -6,8 +6,8 @@ const DetailSkeleton = () => {
 	return (
 		<>
 			<List>
-				{length.map(() => (
-					<Wrap>
+				{length.map((el, idx) => (
+					<Wrap key={idx}>
 						<Skeleton
 							animation="wave"
 							variant="rounded"

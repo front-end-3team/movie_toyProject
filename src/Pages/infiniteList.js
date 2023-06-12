@@ -86,10 +86,11 @@ function InfiniteList({
 						</S.MainCont1>
 					</S.MainPostWrap>
 					<S.List>
-						{data.pages.map(db => {
+						{data.pages.map((db, idx) => {
 							return db.results.map(el => (
 								<S.Box
 									onClick={() => navigate(`/detail/${el.id}`)}
+									key={idx}
 								>
 									<S.ImgWrap>
 										<S.Img

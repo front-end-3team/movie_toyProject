@@ -3,7 +3,7 @@ import { Axios } from './@core';
 const API_KEY = process.env.REACT_APP_TMDB_API_KEY;
 const PATH = '/movie';
 const LANGUAGE = 'ko-KR';
-//en-US ko-KR
+
 export const getMovies = async ({ pageParam }) => {
 	const res = await Axios.get(`${PATH}/popular?api_key=${API_KEY}`, {
 		params: {
@@ -55,7 +55,6 @@ export const getSearch = async ({ title }) => {
 	});
 	return res.data;
 };
-// &append_to_response=videos,images
 
 export const getDetail = async ({ movieId }) => {
 	const res = await Axios.get(`${PATH}/${movieId}?api_key=${API_KEY}`, {
