@@ -56,11 +56,11 @@ function SearchList({ data, isLoading, isError, error, title }) {
 
 export default SearchList;
 const Div = styled.div`
-	background-color: rgb(32, 33, 36);
+	background-color: #111111;
 `;
 
 const List = styled.div`
-	background-color: rgb(32, 33, 36);
+	background-color: ${({ theme }) => theme.COLOR.common.black};
 	padding-top: 50px;
 	display: flex;
 	justify-content: center;
