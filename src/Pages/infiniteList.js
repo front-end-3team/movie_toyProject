@@ -65,6 +65,7 @@ function InfiniteList({
 		};
 	}, []);
 
+	console.log(data);
 	return (
 		<>
 			{isLoading ? (
@@ -79,7 +80,7 @@ function InfiniteList({
 							}
 						></S.MainPost>
 						<S.MainCont>
-							{data.pages[0].results[random].original_title}
+							{data.pages[0].results[random].title}
 						</S.MainCont>
 						<S.MainCont1>
 							개봉일 :{data.pages[0].results[random].release_date}
