@@ -15,7 +15,6 @@ function UpComing() {
 
 	return (
 		<>
-			<S.H1>상영예정작</S.H1>
 			<InfiniteList
 				data={data}
 				isLoading={isLoading}

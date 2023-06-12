@@ -15,7 +15,6 @@ function TopRated() {
 
 	return (
 		<>
-			<S.H1>인기영화</S.H1>
 			<InfiniteList
 				data={data}
 				isLoading={isLoading}

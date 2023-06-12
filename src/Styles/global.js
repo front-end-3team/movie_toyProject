@@ -1,4 +1,4 @@
-import { createGlobalStyle } from 'styled-components'
+import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyles = createGlobalStyle`
     @font-face {
@@ -38,34 +38,17 @@ const GlobalStyles = createGlobalStyle`
 
     h1 {
         // 로고
-        font-size:${({ theme }) => theme.FONT_SIZE.big};
     }
 
     h2 {
-        font-size:${({ theme }) => theme.FONT_SIZE.huge};
         font-family: ${({ theme }) => theme.FONT_WEIGHT.bold};
-    }
-
-    h2 ~ p {
-        font-size:${({ theme }) => theme.FONT_SIZE.large}
-        
     }
 
     h3 {
-        font-size:${({ theme }) => theme.FONT_SIZE.large};
         font-family: ${({ theme }) => theme.FONT_WEIGHT.bold};
     }
 
-    h3 ~ p {
-        font-size:${({ theme }) => theme.FONT_SIZE.medium}
-    }
-
-    h3 ~ span {
-        font-size:${({ theme }) => theme.FONT_SIZE.small}
-    }
-
     h4 {
-        font-size:${({ theme }) => theme.FONT_SIZE.medium};
         font-family: ${({ theme }) => theme.FONT_WEIGHT.bold};
     }
 
@@ -78,18 +61,12 @@ const GlobalStyles = createGlobalStyle`
     }
 
     textarea {
-        font-size:${({ theme }) => theme.FONT_SIZE.small};
         font-family: 'LINESeed-Rg';
     }
 
     p {
-        font-size:${({ theme }) => theme.FONT_SIZE.small};
         font-weight:${({ theme }) => theme.FONT_WEIGHT.regular}
     }
+`;
 
-    span {
-        font-size:${({ theme }) => theme.FONT_SIZE.tiny}
-    }
-`
-
-export default GlobalStyles
+export default GlobalStyles;

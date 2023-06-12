@@ -17,7 +17,6 @@ function Search() {
 
 	return (
 		<>
-			<S.H1>Search</S.H1>
 			{isLoading ? (
 				<DetailSkeleton />
 			) : (

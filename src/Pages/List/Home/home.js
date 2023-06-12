@@ -14,7 +14,6 @@ function HomePage() {
 		});
 	return (
 		<S.Wrapper>
-			<S.H1>홈</S.H1>
 			<InfiniteList
 				data={data}
 				isLoading={isLoading}

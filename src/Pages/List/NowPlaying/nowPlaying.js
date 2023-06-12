@@ -23,7 +23,6 @@ function NowPlaying() {
 
 	return (
 		<>
-			<S.H1>현재상영작</S.H1>
 			<InfiniteList
 				data={data}
 				isLoading={isLoading}

@@ -10,4 +10,5 @@ const H1 = styled.div`
 	color: black;
 	text-align: center;
 	margin-top: 200px;
+	background-color: white;
 `;

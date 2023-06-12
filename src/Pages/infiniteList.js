@@ -1,7 +1,8 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import MuiSkeleton from '../skeleton/skeleton';
+import { FlexBetweenCSS, FlexJustifyCSS } from '../Styles/common';
 
 function InfiniteList({
 	data,
@@ -17,6 +18,7 @@ function InfiniteList({
 	if (isError) {
 		return <h2>{error.message}</h2>;
 	}
+	// const [upView, setUpView]
 
 	const handleScroll = () => {
 		const scrollHeight = document.documentElement.scrollHeight;
@@ -46,7 +48,23 @@ function InfiniteList({
 
 	const random = Math.floor(Math.random() * 20);
 
-	console.log({ data });
+	const [scroll, setScroll] = useState(false);
+
+	const handleScroll1 = () => {
+		if (window.scrollY >= 200) {
+			setScroll(true);
+		} else {
+			setScroll(false);
+		}
+	};
+
+	useEffect(() => {
+		window.addEventListener('scroll', handleScroll1);
+		return () => {
+			window.removeEventListener('scroll', handleScroll1); //clean up
+		};
+	}, []);
+
 	return (
 		<>
 			{isLoading ? (
@@ -64,8 +82,7 @@ function InfiniteList({
 							{data.pages[0].results[random].original_title}
 						</S.MainCont>
 						<S.MainCont1>
-							개봉일 :{' '}
-							{data.pages[0].results[random].release_date}
+							개봉일 :{data.pages[0].results[random].release_date}
 						</S.MainCont1>
 					</S.MainPostWrap>
 					<S.List>
@@ -79,20 +96,22 @@ function InfiniteList({
 											src={IMG_BASE_URL + el.poster_path}
 										/>
 									</S.ImgWrap>
-									<S.Contents>
+									<S.ContentWrapper>
 										<S.Contents_Header>
 											<S.Title>{el.title}</S.Title>
 											<div>⭐️ {el.vote_average}</div>
 										</S.Contents_Header>
 										<S.Contents_Body>
-											{el.overview.substr(0, 100) + '...'}
+											{el.overview.substr(0, 50) + '...'}
 										</S.Contents_Body>
-									</S.Contents>
+									</S.ContentWrapper>
 								</S.Box>
 							));
 						})}
 					</S.List>
-					<UpBtn onClick={scrollUp}>UP!</UpBtn>
+					<S.UpBtn onClick={scrollUp} scroll={scroll}>
+						UP
+					</S.UpBtn>
 				</>
 			)}
 		</>
@@ -102,59 +121,58 @@ function InfiniteList({
 export default InfiniteList;
 const MainCont1 = styled.div`
 	font-size: 40px;
-	color: white;
 	position: absolute;
-	bottom: 40px;
+	bottom: 20rem;
 	left: 180px;
+	text-shadow: black 1px 1px 10px;
+	color: ${({ theme }) => theme.COLOR.common.white};
 `;
 const MainCont = styled.div`
-	font-size: 100px;
-	font-weight: bold;
-	color: white;
+	font-size: 80px;
+	font-weight: 600;
+	text-shadow: black 1px 1px 10px;
+	color: ${({ theme }) => theme.COLOR.common.white};
 	position: absolute;
-	bottom: 80px;
+	bottom: 24rem;
 	left: 180px;
-	max-width: 60%;
 `;
 const MainPost = styled.img`
 	width: 100%;
-	/* height: 550px; */
+	height: 80vh;
 	position: relative;
+	opacity: 0.7;
 `;
 const MainPostWrap = styled.div`
-	background-color: rgb(32, 33, 36);
 	display: flex;
 	justify-content: center;
 	position: relative;
 `;
 const List = styled.div`
 	background-color: ${({ theme }) => theme.COLOR.common.black};
-
-	display: flex;
-	justify-content: center;
+	${FlexJustifyCSS}
 	flex-wrap: wrap;
 `;
 const Box = styled.div`
-	color: white;
-	background-color: rgb(32, 33, 36);
+	background-color: #111111;
 	width: 300px;
-	border-radius: 15px;
 	margin: 30px;
 	cursor: pointer;
-	:hover {
-		filter: brightness(60%);
+	&:hover {
+		transform: scale(1.1);
+		transition: transform 0.9s;
 	}
+	transform: scale(1);
+	transition: transform 0.9s;
 `;
+
 const Img = styled.img`
 	height: 320px;
-	width: 300px;
+	width: 310px;
 `;
-const Contents = styled.div`
-	padding: 10px 0;
-`;
+
 const Contents_Header = styled.div`
-	display: flex;
-	justify-content: space-between;
+	${FlexBetweenCSS}
+	color: white;
 	font-size: 20px;
 `;
 const Contents_Body = styled.div`
@@ -163,18 +181,23 @@ const Contents_Body = styled.div`
 	color: rgb(152, 152, 152);
 `;
 const ImgWrap = styled.div`
-	display: flex;
-	justify-content: center;
+	${FlexJustifyCSS}
 `;
 const UpBtn = styled.button`
-	padding: 22px;
+	font-weight: bold;
+	font-size: 15px;
+	padding: 20px 15px;
+	background-color: #000;
+	color: #fff;
+	border: 2px solid rgb(210, 204, 193);
 	border-radius: 50%;
-	background-color: rgb(152, 152, 152);
+	outline: none;
+	cursor: pointer;
 	position: sticky;
 	left: 92%;
 	bottom: 100px;
-	box-shadow: -5px -5px rgb(102, 102, 102) inset;
-	border: none;
+	display: none;
+	display: ${({ scroll }) => (scroll ? 'block' : 'none')};
 	:hover {
 		background-color: rgb(102, 102, 102);
 	}
@@ -182,11 +205,13 @@ const UpBtn = styled.button`
 const Title = styled.div`
 	max-width: 150px;
 `;
+const ContentWrapper = styled.div`
+	padding: 10px;
+`;
 const S = {
 	List,
 	Box,
 	Img,
-	Contents,
 	Contents_Header,
 	Contents_Body,
 	ImgWrap,
@@ -195,5 +220,6 @@ const S = {
 	MainCont,
 	MainPostWrap,
 	MainCont1,
+	ContentWrapper,
 	Title,
 };
