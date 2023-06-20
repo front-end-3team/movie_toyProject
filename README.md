@@ -4,13 +4,18 @@
 
 ---
 
-## 배포주소
+## 📧 배포주소
 
 -   [영화를 보CINEMA](https://movie-toy-project-git-main-3team-movie-trailer.vercel.app/)
 
 ---
+## 🖥️ 서비스 화면
+![영화](https://github.com/front-end-3team/movie_toyProject/assets/117560052/ec1c1165-80e3-460c-9199-7e6f2679b392)
 
+
+---
 ## 프로젝트 폴더구조
+
 
 ```
 src
